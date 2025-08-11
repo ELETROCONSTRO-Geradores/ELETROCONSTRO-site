@@ -1001,8 +1001,8 @@
             }
 
             .trabalhos-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 15px;
             }
 
             .trabalho-image {
@@ -1797,8 +1797,9 @@
 
         .trabalhos-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 18px;
+            align-items: start;
         }
         
         .trabalho-item {
@@ -1820,7 +1821,7 @@
         
         .trabalho-image {
             position: relative;
-            height: 250px;
+            height: 220px;
             overflow: hidden;
         }
         
@@ -3594,7 +3595,13 @@ Mensagem: ${mensagem}
         grid.innerHTML = produtos.map(prod => `
             <div class="produto-card" data-aos="fade-up">
                 <div class="produto-imagem">
-                    <img src="${prod.imagens[0]}" alt="${prod.nome}" loading="lazy">
+                    <img src="${prod.imagens[0]}" alt="${prod.nome}" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div style="display: none; align-items: center; justify-content: center; height: 100%; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); color: #6c757d; border-radius: 8px;">
+                        <div style="text-align: center;">
+                            <i class="fas fa-box" style="font-size: 2.5rem; opacity: 0.4; margin-bottom: 8px; display: block;"></i>
+                            <p style="margin: 0; font-size: 12px; font-weight: 500;">${prod.nome}</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="produto-info">
                 <div class="produto-nome">${prod.nome}</div>
@@ -3909,11 +3916,11 @@ Mensagem: ${mensagem}
             description: "Inspeção termográfica completa de subestação elétrica. Análise de transformadores e painéis de distribuição.",
             category: "analises-termograficas",
             images: [
-                "images/Análises Termográficas/IMG_9148.jpg",
-                "images/Análises Termográficas/IMG_9149.jpg",
-                "images/Análises Termográficas/IMG_9150.jpg",
-                "images/Análises Termográficas/IMG_9151.jpg",
-                "images/Análises Termográficas/IMG_9152.jpg"
+                "images/Análises Termográficas/4958593727132184890.jpg",
+                "images/Análises Termográficas/4958593727132184892.jpg",
+                "images/Análises Termográficas/4958593727132184893.jpg",
+                "images/Análises Termográficas/4958593727132184894.jpg",
+                "images/Análises Termográficas/4958593727132184895.jpg"
             ],
             specs: [
                 "Inspeção de transformadores",
@@ -4011,11 +4018,11 @@ Mensagem: ${mensagem}
             description: "Perícia técnica especializada em sistema de geração de energia. Análise de falhas e responsabilidades.",
             category: "laudos-pericias",
             images: [
-                "images/Laudos e Perícias/IMG_9153.jpg",
-                "images/Laudos e Perícias/IMG_9154.jpg",
-                "images/Laudos e Perícias/IMG_9155.jpg",
-                "images/Laudos e Perícias/IMG_9156.jpg",
-                "images/Laudos e Perícias/IMG_9157.jpg"
+                "images/Laudos e Perícias/4958593727132184887.jpg",
+                "images/Laudos e Perícias/4958593727132184888.jpg",
+                "images/Laudos e Perícias/4958593727132184889.jpg",
+                "images/Laudos e Perícias/4958593727132184891.jpg",
+                "images/Laudos e Perícias/4958593727132184906.jpg"
             ],
             specs: [
                 "Análise de falhas técnicas",
@@ -4093,11 +4100,11 @@ Mensagem: ${mensagem}
             description: "Limpeza química especializada do sistema de combustível. Remoção de resíduos e otimização de performance.",
             category: "limpeza-quimica",
             images: [
-                "images/Limpeza Química em GMGs/IMG_9158.jpg",
-                "images/Limpeza Química em GMGs/IMG_9159.jpg",
-                "images/Limpeza Química em GMGs/IMG_9160.jpg",
-                "images/Limpeza Química em GMGs/IMG_9161.jpg",
-                "images/Limpeza Química em GMGs/IMG_9162.jpg"
+                "images/Limpeza Química em GMGs/4958593727132184959.jpg",
+                "images/Limpeza Química em GMGs/4958593727132184960.jpg",
+                "images/Limpeza Química em GMGs/4958593727132184961.jpg",
+                "images/Limpeza Química em GMGs/4958593727132184962.jpg",
+                "images/Limpeza Química em GMGs/4958593727132184963.jpg"
             ],
             specs: [
                 "Limpeza de tanques",
@@ -4195,11 +4202,11 @@ Mensagem: ${mensagem}
             description: "Programa de manutenção preventiva para grupo gerador industrial. Garantia de operação contínua.",
             category: "manutencao-gmgs",
             images: [
-                "images/Manutenção de GMGs/IMG_9163.jpg",
-                "images/Manutenção de GMGs/IMG_9164.jpg",
-                "images/Manutenção de GMGs/IMG_9165.jpg",
-                "images/Manutenção de GMGs/IMG_9166.jpg",
-                "images/Manutenção de GMGs/IMG_9167.jpg"
+                "images/Manutenção de GMGs/4958593727132184932.jpg",
+                "images/Manutenção de GMGs/4958593727132184937.jpg",
+                "images/Manutenção de GMGs/4958593727132184954.jpg",
+                "images/Manutenção de GMGs/4958593727132184964.jpg",
+                "images/Manutenção de GMGs/4958593727132184965.jpg"
             ],
             specs: [
                 "Inspeção mensal completa",
@@ -4277,11 +4284,11 @@ Mensagem: ${mensagem}
             description: "Perícia técnica em sistema fotovoltaico comercial. Avaliação de performance e conformidade.",
             category: "pericia-instalacoes",
             images: [
-                "images/Perícia em Instalações UFV/IMG_9168.jpg",
-                "images/Perícia em Instalações UFV/IMG_9169.jpg",
-                "images/Perícia em Instalações UFV/IMG_9170.jpg",
-                "images/Perícia em Instalações UFV/IMG_9171.jpg",
-                "images/Perícia em Instalações UFV/IMG_9172.jpg"
+                "images/Perícia em Instalações UFV/4958593727132184909.jpg",
+                "images/Perícia em Instalações UFV/4958593727132184910.jpg",
+                "images/Perícia em Instalações UFV/4958593727132184911.jpg",
+                "images/Perícia em Instalações UFV/4958593727132184912.jpg",
+                "images/Perícia em Instalações UFV/4958593727132184913.jpg"
             ],
             specs: [
                 "Análise de performance",
@@ -4289,6 +4296,521 @@ Mensagem: ${mensagem}
                 "Testes de eficiência",
                 "Laudo técnico completo",
                 "Recomendações de otimização"
+            ]
+        },
+        
+        // Novos trabalhos adicionados para incluir todas as imagens disponíveis
+        
+        // Análises Termográficas - Trabalhos Adicionais
+        {
+            id: 23,
+            title: "Análise Termográfica - Sistema Elétrico Industrial",
+            description: "Análise termográfica completa de sistema elétrico industrial. Detecção de pontos de aquecimento e prevenção de falhas.",
+            category: "analises-termograficas",
+            images: [
+                "images/Análises Termográficas/4958593727132184889.jpg",
+                "images/Análises Termográficas/4958593727132184890.jpg",
+                "images/Análises Termográficas/4958593727132184892.jpg",
+                "images/Análises Termográficas/4958593727132184893.jpg",
+                "images/Análises Termográficas/4958593727132184894.jpg"
+            ],
+            specs: [
+                "Análise de painéis elétricos",
+                "Detecção de pontos quentes",
+                "Mapeamento térmico completo",
+                "Relatório técnico detalhado",
+                "Recomendações de manutenção"
+            ]
+        },
+        {
+            id: 24,
+            title: "Inspeção Termográfica - Equipamentos Industriais",
+            description: "Inspeção termográfica especializada em equipamentos industriais. Análise de performance e detecção de anomalias.",
+            category: "analises-termograficas",
+            images: [
+                "images/Análises Termográficas/4958593727132184895.jpg",
+                "images/Análises Termográficas/4958593727132184896.jpg",
+                "images/Análises Termográficas/4958593727132184897.jpg",
+                "images/Análises Termográficas/4958593727132184898.jpg",
+                "images/Análises Termográficas/4958593727132184899.jpg"
+            ],
+            specs: [
+                "Análise de equipamentos críticos",
+                "Detecção de sobreaquecimento",
+                "Mapeamento de pontos críticos",
+                "Relatório de anomalias",
+                "Plano de correção preventiva"
+            ]
+        },
+        {
+            id: 25,
+            title: "Análise Termográfica - Sistema de Distribuição",
+            description: "Análise termográfica avançada de sistema de distribuição elétrica. Verificação de transformadores e painéis.",
+            category: "analises-termograficas",
+            images: [
+                "images/Análises Termográficas/4958593727132184900.jpg",
+                "images/Análises Termográficas/4958593727132184901.jpg",
+                "images/Análises Termográficas/4958593727132184902.jpg",
+                "images/Análises Termográficas/4958593727132184903.jpg",
+                "images/Análises Termográficas/4958593727132184904.jpg"
+            ],
+            specs: [
+                "Análise de transformadores",
+                "Verificação de painéis de distribuição",
+                "Detecção de pontos quentes",
+                "Relatório técnico detalhado",
+                "Recomendações de manutenção"
+            ]
+        },
+        {
+            id: 26,
+            title: "Inspeção Termográfica - Sistema de Geração",
+            description: "Inspeção termográfica completa de sistema de geração de energia. Análise de componentes críticos.",
+            category: "analises-termograficas",
+            images: [
+                "images/Análises Termográficas/4958593727132184905.jpg",
+                "images/Análises Termográficas/4958593727132184930.jpg",
+                "images/Análises Termográficas/4958593727132184931.jpg"
+            ],
+            specs: [
+                "Análise de geradores",
+                "Verificação de componentes críticos",
+                "Detecção de anomalias térmicas",
+                "Relatório de performance",
+                "Plano de manutenção preventiva"
+            ]
+        },
+        
+        // Laudos e Perícias - Trabalhos Adicionais
+        {
+            id: 27,
+            title: "Laudo Técnico - Sistema de Distribuição",
+            description: "Laudo técnico completo de sistema de distribuição elétrica. Análise de conformidade e segurança.",
+            category: "laudos-pericias",
+            images: [
+                "images/Laudos e Perícias/4958593727132184886.jpg",
+                "images/Laudos e Perícias/4958593727132184887.jpg",
+                "images/Laudos e Perícias/4958593727132184888.jpg",
+                "images/Laudos e Perícias/4958593727132184891.jpg",
+                "images/Laudos e Perícias/4958593727132184906.jpg"
+            ],
+            specs: [
+                "Análise de conformidade técnica",
+                "Verificação de padrões de segurança",
+                "Relatório de inspeção detalhado",
+                "Certificação técnica",
+                "Documentação legal"
+            ]
+        },
+        {
+            id: 28,
+            title: "Perícia Técnica - Sistema de Controle",
+            description: "Perícia técnica especializada em sistema de controle industrial. Análise de falhas e responsabilidades.",
+            category: "laudos-pericias",
+            images: [
+                "images/Laudos e Perícias/4958593727132184907.jpg",
+                "images/Laudos e Perícias/4958593727132184908.jpg",
+                "images/Laudos e Perícias/4958593727132184929.jpg",
+                "images/Laudos e Perícias/4958593727132184933.jpg",
+                "images/Laudos e Perícias/4958593727132184934.jpg"
+            ],
+            specs: [
+                "Análise de falhas técnicas",
+                "Investigação de causas",
+                "Laudo pericial detalhado",
+                "Avaliação de responsabilidades",
+                "Relatório para seguros"
+            ]
+        },
+        {
+            id: 29,
+            title: "Laudo de Conformidade - Equipamentos Industriais",
+            description: "Laudo de conformidade para equipamentos industriais. Verificação de padrões e normas técnicas.",
+            category: "laudos-pericias",
+            images: [
+                "images/Laudos e Perícias/4958593727132184935.jpg",
+                "images/Laudos e Perícias/4958593727132184936.jpg",
+                "images/Laudos e Perícias/4958593727132184938.jpg",
+                "images/Laudos e Perícias/4958593727132184939.jpg",
+                "images/Laudos e Perícias/4958593727132184940.jpg"
+            ],
+            specs: [
+                "Verificação de conformidade",
+                "Análise de padrões técnicos",
+                "Relatório de conformidade",
+                "Certificação técnica",
+                "Documentação legal"
+            ]
+        },
+        {
+            id: 30,
+            title: "Perícia em Sistema de Automação",
+            description: "Perícia técnica em sistema de automação industrial. Análise de falhas e performance.",
+            category: "laudos-pericias",
+            images: [
+                "images/Laudos e Perícias/4958593727132184941.jpg",
+                "images/Laudos e Perícias/4958593727132184942.jpg",
+                "images/Laudos e Perícias/4958593727132184943.jpg",
+                "images/Laudos e Perícias/4958593727132184944.jpg",
+                "images/Laudos e Perícias/4958593727132184945.jpg"
+            ],
+            specs: [
+                "Análise de sistema de automação",
+                "Investigação de falhas",
+                "Laudo pericial técnico",
+                "Avaliação de performance",
+                "Relatório de correção"
+            ]
+        },
+        {
+            id: 31,
+            title: "Laudo Técnico - Sistema de Proteção",
+            description: "Laudo técnico de sistema de proteção elétrica. Verificação de dispositivos de segurança.",
+            category: "laudos-pericias",
+            images: [
+                "images/Laudos e Perícias/4958593727132184946.jpg",
+                "images/Laudos e Perícias/4958593727132184947.jpg",
+                "images/Laudos e Perícias/4958593727132184948.jpg",
+                "images/Laudos e Perícias/4958593727132184949.jpg",
+                "images/Laudos e Perícias/4958593727132184950.jpg"
+            ],
+            specs: [
+                "Análise de dispositivos de proteção",
+                "Verificação de segurança",
+                "Relatório técnico detalhado",
+                "Certificação de conformidade",
+                "Documentação legal"
+            ]
+        },
+        {
+            id: 32,
+            title: "Perícia em Sistema de Controle Industrial",
+            description: "Perícia técnica em sistema de controle industrial. Análise de falhas e responsabilidades.",
+            category: "laudos-pericias",
+            images: [
+                "images/Laudos e Perícias/4958593727132184951.jpg",
+                "images/Laudos e Perícias/4958593727132184952.jpg",
+                "images/Laudos e Perícias/4958593727132184953.jpg",
+                "images/Laudos e Perícias/4958593727132184955.jpg",
+                "images/Laudos e Perícias/4958593727132184956.jpg"
+            ],
+            specs: [
+                "Análise de falhas técnicas",
+                "Investigação de causas",
+                "Laudo pericial detalhado",
+                "Avaliação de responsabilidades",
+                "Relatório para seguros"
+            ]
+        },
+        {
+            id: 33,
+            title: "Laudo de Conformidade - Sistema de Automação",
+            description: "Laudo de conformidade para sistema de automação industrial. Verificação de padrões e normas.",
+            category: "laudos-pericias",
+            images: [
+                "images/Laudos e Perícias/4958593727132184957.jpg",
+                "images/Laudos e Perícias/4958593727132184958.jpg",
+                "images/Laudos e Perícias/65FC7DFE-B5D7-4350-BD02-34A78888EBF6.jpg",
+                "images/Laudos e Perícias/A85E5885-BDA4-44EE-A765-BD41196629B6.jpg",
+                "images/Laudos e Perícias/8EFCF33C-1143-4562-B1F8-F8F0FF8729FD.jpg"
+            ],
+            specs: [
+                "Verificação de conformidade",
+                "Análise de padrões técnicos",
+                "Relatório de conformidade",
+                "Certificação técnica",
+                "Documentação legal"
+            ]
+        },
+        {
+            id: 34,
+            title: "Perícia Técnica - Sistema de Controle Avançado",
+            description: "Perícia técnica especializada em sistema de controle avançado. Análise de performance e falhas.",
+            category: "laudos-pericias",
+            images: [
+                "images/Laudos e Perícias/IMG_7079.PNG",
+                "images/Laudos e Perícias/IMG_1353.jpg",
+                "images/Laudos e Perícias/IMG_2303.PNG",
+                "images/Laudos e Perícias/fd2c2a54-9488-4535-ac42-51a39de28c34.jpg",
+                "images/Laudos e Perícias/4958593727132184916.jpg"
+            ],
+            specs: [
+                "Análise de sistema avançado",
+                "Investigação de falhas técnicas",
+                "Laudo pericial detalhado",
+                "Avaliação de performance",
+                "Relatório de correção"
+            ]
+        },
+        
+        // Limpeza Química em GMGs - Trabalhos Adicionais
+        {
+            id: 35,
+            title: "Limpeza Química - Sistema de Combustível Industrial",
+            description: "Limpeza química especializada do sistema de combustível industrial. Remoção de resíduos e otimização.",
+            category: "limpeza-quimica",
+            images: [
+                "images/Limpeza Química em GMGs/4958593727132184959.jpg",
+                "images/Limpeza Química em GMGs/4958593727132184960.jpg",
+                "images/Limpeza Química em GMGs/4958593727132184961.jpg",
+                "images/Limpeza Química em GMGs/4958593727132184962.jpg",
+                "images/Limpeza Química em GMGs/4958593727132184963.jpg"
+            ],
+            specs: [
+                "Limpeza de tanques de combustível",
+                "Tratamento químico especializado",
+                "Remoção de resíduos",
+                "Análise de qualidade",
+                "Relatório de limpeza"
+            ]
+        },
+        {
+            id: 36,
+            title: "Limpeza Química - Sistema de Arrefecimento Industrial",
+            description: "Limpeza química completa do sistema de arrefecimento industrial. Prevenção de corrosão.",
+            category: "limpeza-quimica",
+            images: [
+                "images/Limpeza Química em GMGs/4958593727132184971.jpg",
+                "images/Limpeza Química em GMGs/4958593727132184975.jpg",
+                "images/Limpeza Química em GMGs/4958593727132184976.jpg",
+                "images/Limpeza Química em GMGs/4958593727132184978.jpg",
+                "images/Limpeza Química em GMGs/4958593727132184979.jpg"
+            ],
+            specs: [
+                "Limpeza de radiadores industriais",
+                "Tratamento anti-corrosivo",
+                "Análise de água",
+                "Prevenção de incrustações",
+                "Relatório de limpeza"
+            ]
+        },
+        {
+            id: 37,
+            title: "Limpeza Química - Sistema de Filtros",
+            description: "Limpeza química especializada de sistema de filtros. Otimização de performance e eficiência.",
+            category: "limpeza-quimica",
+            images: [
+                "images/Limpeza Química em GMGs/4958593727132184981.jpg",
+                "images/Limpeza Química em GMGs/4958593727132184982.jpg",
+                "images/Limpeza Química em GMGs/4958593727132184983.jpg",
+                "images/Limpeza Química em GMGs/4958593727132184971.jpg",
+                "images/Limpeza Química em GMGs/4958593727132184975.jpg"
+            ],
+            specs: [
+                "Limpeza de filtros de ar",
+                "Limpeza de filtros de combustível",
+                "Tratamento químico especializado",
+                "Análise de eficiência",
+                "Relatório de limpeza"
+            ]
+        },
+        
+        // Manutenção de GMGs - Trabalhos Adicionais
+        {
+            id: 38,
+            title: "Manutenção Preventiva - GMG Industrial Avançado",
+            description: "Programa de manutenção preventiva avançado para grupo gerador industrial. Garantia de operação contínua.",
+            category: "manutencao-gmgs",
+            images: [
+                "images/Manutenção de GMGs/4958593727132184885.jpg",
+                "images/Manutenção de GMGs/4958593727132184932.jpg",
+                "images/Manutenção de GMGs/4958593727132184937.jpg",
+                "images/Manutenção de GMGs/4958593727132184954.jpg",
+                "images/Manutenção de GMGs/4958593727132184964.jpg"
+            ],
+            specs: [
+                "Inspeção mensal completa",
+                "Troca de filtros e óleos",
+                "Testes de carga regulares",
+                "Relatórios detalhados",
+                "Suporte técnico 24h"
+            ]
+        },
+        {
+            id: 39,
+            title: "Manutenção Corretiva - GMG de Emergência",
+            description: "Atendimento emergencial para grupo gerador. Substituição de componentes críticos em tempo recorde.",
+            category: "manutencao-gmgs",
+            images: [
+                "images/Manutenção de GMGs/4958593727132184965.jpg",
+                "images/Manutenção de GMGs/4958593727132184966.jpg",
+                "images/Manutenção de GMGs/4958593727132184967.jpg",
+                "images/Manutenção de GMGs/4958593727132184968.jpg",
+                "images/Manutenção de GMGs/4958593727132184969.jpg"
+            ],
+            specs: [
+                "Atendimento em 2 horas",
+                "Diagnóstico rápido",
+                "Substituição de peças",
+                "Testes de funcionamento",
+                "Garantia de qualidade"
+            ]
+        },
+        {
+            id: 40,
+            title: "Instalação de GMG - Sistema Industrial",
+            description: "Instalação completa de grupo gerador para sistema industrial. Configuração e comissionamento.",
+            category: "manutencao-gmgs",
+            images: [
+                "images/Manutenção de GMGs/4958593727132184970.jpg",
+                "images/Manutenção de GMGs/4958593727132184972.jpg",
+                "images/Manutenção de GMGs/4958593727132184973.jpg",
+                "images/Manutenção de GMGs/4958593727132184974.jpg",
+                "images/Manutenção de GMGs/4958593727132184977.jpg"
+            ],
+            specs: [
+                "Instalação completa",
+                "Configuração de sistema",
+                "Comissionamento",
+                "Testes de funcionamento",
+                "Treinamento da equipe"
+            ]
+        },
+        {
+            id: 41,
+            title: "Manutenção Especializada - GMG Hospitalar",
+            description: "Manutenção especializada para grupo gerador hospitalar. Garantia de funcionamento 24/7.",
+            category: "manutencao-gmgs",
+            images: [
+                "images/Manutenção de GMGs/4958593727132184980.jpg",
+                "images/Manutenção de GMGs/9172ECF0-6640-4EED-B1B9-B0EF0F3EEC0A.jpg",
+                "images/Manutenção de GMGs/IMG_7082.PNG",
+                "images/Manutenção de GMGs/IMG_7078.PNG",
+                "images/Manutenção de GMGs/IMG_9084.jpg"
+            ],
+            specs: [
+                "Manutenção preventiva hospitalar",
+                "Inspeção de componentes críticos",
+                "Testes de backup",
+                "Relatório técnico completo",
+                "Suporte 24/7"
+            ]
+        },
+        {
+            id: 42,
+            title: "Manutenção Avançada - GMG Industrial",
+            description: "Manutenção avançada para grupo gerador industrial. Análise de performance e otimização.",
+            category: "manutencao-gmgs",
+            images: [
+                "images/Manutenção de GMGs/IMG_9140.JPG",
+                "images/Manutenção de GMGs/4958593727132184885.jpg",
+                "images/Manutenção de GMGs/4958593727132184932.jpg",
+                "images/Manutenção de GMGs/4958593727132184937.jpg",
+                "images/Manutenção de GMGs/4958593727132184954.jpg"
+            ],
+            specs: [
+                "Análise de performance",
+                "Otimização de sistema",
+                "Manutenção preventiva",
+                "Relatório técnico detalhado",
+                "Recomendações de melhoria"
+            ]
+        },
+        
+        // Perícia em Instalações UFV - Trabalhos Adicionais
+        {
+            id: 43,
+            title: "Perícia em Sistema Solar - Industrial",
+            description: "Perícia técnica em sistema fotovoltaico industrial. Avaliação de performance e eficiência energética.",
+            category: "pericia-instalacoes",
+            images: [
+                "images/Perícia em Instalações UFV/4958593727132184884.jpg",
+                "images/Perícia em Instalações UFV/4958593727132184909.jpg",
+                "images/Perícia em Instalações UFV/4958593727132184910.jpg",
+                "images/Perícia em Instalações UFV/4958593727132184911.jpg",
+                "images/Perícia em Instalações UFV/4958593727132184912.jpg"
+            ],
+            specs: [
+                "Análise de performance energética",
+                "Verificação de instalação",
+                "Testes de eficiência",
+                "Laudo técnico completo",
+                "Recomendações de otimização"
+            ]
+        },
+        {
+            id: 44,
+            title: "Inspeção de Sistema UFV - Industrial",
+            description: "Inspeção técnica de sistema fotovoltaico industrial. Verificação de conformidade e segurança.",
+            category: "pericia-instalacoes",
+            images: [
+                "images/Perícia em Instalações UFV/4958593727132184913.jpg",
+                "images/Perícia em Instalações UFV/4958593727132184914.jpg",
+                "images/Perícia em Instalações UFV/4958593727132184915.jpg",
+                "images/Perícia em Instalações UFV/4958593727132184884.jpg",
+                "images/Perícia em Instalações UFV/4958593727132184909.jpg"
+            ],
+            specs: [
+                "Verificação de conformidade",
+                "Análise de segurança",
+                "Testes de isolamento",
+                "Relatório de inspeção",
+                "Certificação técnica"
+            ]
+        },
+        
+        // Trabalhos adicionais para incluir imagens restantes
+        
+        
+        // Laudos e Perícias - Imagens restantes
+        {
+            id: 46,
+            title: "Laudo Técnico - Sistema de Automação Industrial",
+            description: "Laudo técnico completo de sistema de automação industrial. Análise de conformidade e performance.",
+            category: "laudos-pericias",
+            images: [
+                "images/Laudos e Perícias/4958593727132184917.jpg",
+                "images/Laudos e Perícias/4958593727132184918.jpg",
+                "images/Laudos e Perícias/4958593727132184919.jpg",
+                "images/Laudos e Perícias/4958593727132184920.jpg",
+                "images/Laudos e Perícias/4958593727132184921.jpg"
+            ],
+            specs: [
+                "Análise de sistema de automação",
+                "Verificação de conformidade",
+                "Relatório técnico detalhado",
+                "Certificação de performance",
+                "Documentação legal"
+            ]
+        },
+        {
+            id: 47,
+            title: "Perícia em Sistema de Controle Especializado",
+            description: "Perícia técnica especializada em sistema de controle industrial. Análise de falhas e responsabilidades.",
+            category: "laudos-pericias",
+            images: [
+                "images/Laudos e Perícias/4958593727132184922.jpg",
+                "images/Laudos e Perícias/4958593727132184923.jpg",
+                "images/Laudos e Perícias/4958593727132184924.jpg",
+                "images/Laudos e Perícias/4958593727132184925.jpg",
+                "images/Laudos e Perícias/4958593727132184926.jpg"
+            ],
+            specs: [
+                "Análise de falhas técnicas",
+                "Investigação de causas",
+                "Laudo pericial detalhado",
+                "Avaliação de responsabilidades",
+                "Relatório para seguros"
+            ]
+        },
+        {
+            id: 48,
+            title: "Laudo de Conformidade - Sistema de Proteção Avançado",
+            description: "Laudo de conformidade para sistema de proteção elétrica avançado. Verificação de dispositivos de segurança.",
+            category: "laudos-pericias",
+            images: [
+                "images/Laudos e Perícias/4958593727132184927.jpg",
+                "images/Laudos e Perícias/4958593727132184928.jpg",
+                "images/Laudos e Perícias/4958593727132184933.jpg",
+                "images/Laudos e Perícias/4958593727132184934.jpg",
+                "images/Laudos e Perícias/4958593727132184935.jpg"
+            ],
+            specs: [
+                "Verificação de dispositivos de proteção",
+                "Análise de segurança avançada",
+                "Relatório técnico detalhado",
+                "Certificação de conformidade",
+                "Documentação legal"
             ]
         }
     ];
@@ -4741,7 +5263,13 @@ Mensagem: ${mensagem}
         grid.innerHTML = filteredTrabalhos.map(trabalho => `
             <div class="trabalho-item" data-aos="fade-up" onclick="openTrabalhosModal(${trabalho.id})" style="cursor: pointer;">
                 <div class="trabalho-image">
-                    <img src="${trabalho.images[0]}" alt="${trabalho.title}" loading="lazy" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlbSBuw6NvIGVuY29udHJhZGE8L3RleHQ+PC9zdmc+'">
+                    <img src="${trabalho.images[0]}" alt="${trabalho.title}" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div style="display: none; align-items: center; justify-content: center; height: 100%; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); color: #6c757d; border-radius: 8px; position: absolute; top: 0; left: 0; right: 0; bottom: 0;">
+                        <div style="text-align: center;">
+                            <i class="fas fa-tools" style="font-size: 2.5rem; opacity: 0.4; margin-bottom: 8px; display: block;"></i>
+                            <p style="margin: 0; font-size: 12px; font-weight: 500;">${trabalho.title}</p>
+                        </div>
+                    </div>
                     <div class="trabalho-overlay">
                         <div class="trabalho-info">
                             <h3>${trabalho.title}</h3>
@@ -4922,9 +5450,12 @@ Mensagem: ${mensagem}
         gallery.innerHTML = `
             <div style="position: relative; width: 100%; height: 100%; cursor: pointer;" onclick="expandirImagemTrabalho('${currentImage}', ${currentTrabalhoImageIndex}, ${images.length})">
                 <img src="${currentImage}" alt="Imagem do trabalho" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div style="display: none; align-items: center; justify-content: center; height: 100%; color: #666;">
-                    <i class="fas fa-image" style="font-size: 3rem; opacity: 0.3;"></i>
-                    <p style="margin-left: 15px;">Imagem não encontrada</p>
+                <div style="display: none; align-items: center; justify-content: center; height: 100%; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); color: #6c757d; border-radius: 8px;">
+                    <div style="text-align: center;">
+                        <i class="fas fa-image" style="font-size: 4rem; opacity: 0.4; margin-bottom: 10px; display: block;"></i>
+                        <p style="margin: 0; font-size: 14px; font-weight: 500;">Imagem em carregamento</p>
+                        <p style="margin: 5px 0 0 0; font-size: 12px; opacity: 0.7;">Aguarde um momento...</p>
+                    </div>
                 </div>
                 <div style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.7); color: white; padding: 5px 10px; border-radius: 20px; font-size: 12px;">
                     <i class="fas fa-expand"></i> Expandir
@@ -5407,8 +5938,16 @@ Data: ${dataHora}
 Cliente: ${nome}
 Telefone: ${telefone}`;
 
-        if (email) mensagem += `\nEmail: ${email}`;
-        if (endereco) mensagem += `\nEndereco: ${endereco}`;
+        console.log('=== DEBUG: Mensagem inicial:', mensagem);
+
+        if (email) {
+            mensagem += `\nEmail: ${email}`;
+            console.log('=== DEBUG: Após adicionar email:', mensagem);
+        }
+        if (endereco) {
+            mensagem += `\nEndereco: ${endereco}`;
+            console.log('=== DEBUG: Após adicionar endereco:', mensagem);
+        }
 
         mensagem += `
 
@@ -5416,6 +5955,9 @@ Produtos:
 ${itensPedido}
 
 Pedido confirmado - preparar para entrega`;
+
+        console.log('=== DEBUG: Mensagem final:', mensagem);
+        console.log('=== DEBUG: itensPedido:', itensPedido);
 
         const numeroWhatsApp = '5569993359326';
         const mensagemCodificada = encodeURIComponent(mensagem);
@@ -5510,15 +6052,26 @@ Pedido confirmado - preparar para entrega`;
             `\nDADOS DO CLIENTE:\n` +
             `Nome: ${nome}\n` +
             `Telefone: ${telefone}`;
+
+        console.log('=== DEBUG: Mensagem checkout inicial:', mensagem);
         
-        if (email) mensagem += `\nEmail: ${email}`;
-        if (endereco) mensagem += `\nEndereco: ${endereco}`;
+        if (email) {
+            mensagem += `\nEmail: ${email}`;
+            console.log('=== DEBUG: Após adicionar email checkout:', mensagem);
+        }
+        if (endereco) {
+            mensagem += `\nEndereco: ${endereco}`;
+            console.log('=== DEBUG: Após adicionar endereco checkout:', mensagem);
+        }
         
         mensagem += `\n\nPRODUTOS SOLICITADOS:\n${listaProdutos}\n`;
+        console.log('=== DEBUG: Após adicionar produtos checkout:', mensagem);
         
         mensagem += `\n\n`;
         
         mensagem += `Mensagem gerada automaticamente pelo site`;
+        console.log('=== DEBUG: Mensagem checkout final:', mensagem);
+        console.log('=== DEBUG: listaProdutos:', listaProdutos);
         
         // Criar URL do WhatsApp
         const numeroWhatsApp = '5569993359326';
@@ -5557,6 +6110,8 @@ Pedido confirmado - preparar para entrega`;
 
     // Função para mostrar mensagem para copiar
     function mostrarMensagemParaCopiar(mensagem, numeroWhatsApp) {
+        // Armazenar mensagem globalmente para uso posterior
+        window.mensagemWhatsAppAtual = mensagem;
         // Criar modal para mostrar a mensagem
         const modal = document.createElement('div');
         modal.style.cssText = `
@@ -5608,7 +6163,7 @@ Pedido confirmado - preparar para entrega`;
             </div>
             
             <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-                <button onclick="copiarMensagem('${mensagem.replace(/'/g, "\\'")}')" style="
+                <button onclick="copiarMensagem()" style="
                     background: #25D366;
                     color: white;
                     border: none;
@@ -5624,7 +6179,7 @@ Pedido confirmado - preparar para entrega`;
                     <i class="fas fa-copy"></i> Copiar Mensagem
                 </button>
                 
-                <button onclick="abrirWhatsAppComMensagem('${numeroWhatsApp}', '${mensagem.replace(/'/g, "\\'")}')" style="
+                <button onclick="abrirWhatsAppComMensagemEspecifica('${numeroWhatsApp}')" style="
                     background: #128C7E;
                     color: white;
                     border: none;
@@ -5659,12 +6214,15 @@ Pedido confirmado - preparar para entrega`;
 
     // Função para copiar mensagem
     function copiarMensagem(mensagem) {
-        navigator.clipboard.writeText(mensagem).then(() => {
+        // Usar a mensagem global se disponível
+        const mensagemParaCopiar = mensagem || window.mensagemWhatsAppAtual || '';
+        
+        navigator.clipboard.writeText(mensagemParaCopiar).then(() => {
             alert('✅ Mensagem copiada com sucesso! Agora cole no WhatsApp.');
         }).catch(() => {
             // Fallback para navegadores antigos
             const textArea = document.createElement('textarea');
-            textArea.value = mensagem;
+            textArea.value = mensagemParaCopiar;
             document.body.appendChild(textArea);
             textArea.select();
             document.execCommand('copy');
@@ -5677,19 +6235,12 @@ Pedido confirmado - preparar para entrega`;
     function abrirWhatsAppAutomatico(mensagem, numeroWhatsApp) {
         console.log('=== DEBUG: Tentando abrir WhatsApp automaticamente');
         
-        // Limpar a mensagem
-        const mensagemLimpa = mensagem
-            .replace(/[^\w\s\-.,!?@#$%&*()+=:;()]/g, '')
-            .replace(/\n/g, '%0A')
-            .replace(/\s+/g, ' ')
-            .trim();
-        
         // Verificar tamanho da mensagem
-        if (mensagemLimpa.length > 3000) {
-            const mensagemTruncada = mensagemLimpa.substring(0, 3000) + '\n\n[Mensagem truncada]';
+        if (mensagem.length > 3000) {
+            const mensagemTruncada = mensagem.substring(0, 3000) + '\n\n[Mensagem truncada]';
             abrirWhatsAppComMensagemTruncada(mensagemTruncada, numeroWhatsApp);
         } else {
-            abrirWhatsAppComMensagemTruncada(mensagemLimpa, numeroWhatsApp);
+            abrirWhatsAppComMensagemTruncada(mensagem, numeroWhatsApp);
         }
     }
     
@@ -5718,6 +6269,15 @@ Pedido confirmado - preparar para entrega`;
     // Função para abrir WhatsApp com mensagem (mantida para compatibilidade)
     function abrirWhatsAppComMensagem(numero, mensagem) {
         const mensagemCodificada = encodeURIComponent(mensagem);
+        const urlWhatsApp = `https://wa.me/${numero}?text=${mensagemCodificada}`;
+        window.open(urlWhatsApp, '_blank');
+    }
+
+    // Função para abrir WhatsApp com mensagem específica (para evitar problemas de escape)
+    function abrirWhatsAppComMensagemEspecifica(numero) {
+        // Recuperar a mensagem do contexto atual
+        const mensagemAtual = window.mensagemWhatsAppAtual || '';
+        const mensagemCodificada = encodeURIComponent(mensagemAtual);
         const urlWhatsApp = `https://wa.me/${numero}?text=${mensagemCodificada}`;
         window.open(urlWhatsApp, '_blank');
     }
@@ -5795,7 +6355,7 @@ Pedido confirmado - preparar para entrega`;
             </div>
             
             <div style="text-align: center;">
-                <button onclick="copiarMensagem('${mensagem.replace(/'/g, "\\'")}')" style="
+                <button onclick="copiarMensagem()" style="
                     background: #25D366;
                     color: white;
                     border: none;
@@ -5808,7 +6368,7 @@ Pedido confirmado - preparar para entrega`;
                     📋 Copiar Mensagem
                 </button>
                 
-                <button onclick="abrirWhatsAppLocal()" style="
+                <button onclick="abrirWhatsAppComMensagemEspecifica('5569993359326')" style="
                     background: #128C7E;
                     color: white;
                     border: none;
@@ -5826,14 +6386,7 @@ Pedido confirmado - preparar para entrega`;
         document.body.appendChild(modal);
     }
 
-    // Função para copiar mensagem
-    function copiarMensagem(mensagem) {
-        navigator.clipboard.writeText(mensagem).then(() => {
-            alert('✅ Mensagem copiada para a área de transferência!');
-        }).catch(() => {
-            alert('❌ Erro ao copiar. Selecione e copie manualmente a mensagem.');
-        });
-    }
+
 
     // Função para abrir WhatsApp local
     function abrirWhatsAppLocal() {
