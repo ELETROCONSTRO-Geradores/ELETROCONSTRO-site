@@ -754,6 +754,16 @@
         }
 
         @media (max-width: 480px) {
+            .trabalhos-filtros {
+                gap: 8px;
+                margin-bottom: 25px;
+            }
+
+            .filtro-btn {
+                padding: 8px 12px;
+                font-size: 0.75rem;
+            }
+
             .hero-title {
                 font-size: 2rem;
                 margin-bottom: 15px;
@@ -980,6 +990,16 @@
             }
 
             /* Galeria de Trabalhos mobile */
+            .trabalhos-filtros {
+                gap: 10px;
+                margin-bottom: 30px;
+            }
+
+            .filtro-btn {
+                padding: 10px 15px;
+                font-size: 0.8rem;
+            }
+
             .trabalhos-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
@@ -1020,6 +1040,17 @@
                 width: 95vw;
                 max-height: 90vh;
                 padding: 20px;
+            }
+
+            .trabalhos-nav-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+
+            .trabalhos-counter {
+                padding: 6px 12px;
+                font-size: 0.8rem;
             }
 
             .trabalhos-gallery {
@@ -1730,6 +1761,40 @@
         }
 
         /* Galeria de Trabalhos */
+        .trabalhos-filtros {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .filtro-btn {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.8) 100%);
+            border: 2px solid rgba(11, 31, 58, 0.2);
+            color: var(--primary);
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            font-size: 0.9rem;
+        }
+
+        .filtro-btn:hover {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .filtro-btn.active {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            box-shadow: var(--shadow-medium);
+        }
+
         .trabalhos-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1745,6 +1810,7 @@
             backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.4);
             position: relative;
+            cursor: pointer;
         }
         
         .trabalho-item:hover {
@@ -1781,6 +1847,7 @@
             justify-content: center;
             opacity: 0;
             transition: all 0.3s ease;
+            pointer-events: none;
         }
         
         .trabalho-item:hover .trabalho-overlay {
@@ -1832,6 +1899,35 @@
             color: #25D366;
         }
         
+        /* Estilos para o botão expandir */
+        .trabalho-expand-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            opacity: 0;
+            transform: translateY(-10px);
+            backdrop-filter: blur(10px);
+        }
+        
+        .trabalho-item:hover .trabalho-expand-btn {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .trabalho-expand-btn:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: scale(1.05);
+        }
+        
         .trabalho-indicator span {
             font-size: 0.8rem;
             font-weight: 500;
@@ -1846,7 +1942,7 @@
             width: 100vw;
             height: 100vh;
             background: rgba(0,0,0,0.5);
-            z-index: 9999;
+            z-index: 99999;
             align-items: center;
             justify-content: center;
             backdrop-filter: blur(5px);
@@ -1886,6 +1982,60 @@
             background: var(--light);
             border-radius: 15px 15px 0 0;
             overflow: hidden;
+        }
+
+        .trabalhos-navigation {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            pointer-events: none;
+        }
+
+        .trabalhos-nav-btn {
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            pointer-events: auto;
+        }
+
+        .trabalhos-nav-btn:hover {
+            background: rgba(0, 0, 0, 0.8);
+            transform: scale(1.1);
+        }
+
+        .trabalhos-nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .trabalhos-nav-btn:disabled:hover {
+            transform: scale(1);
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .trabalhos-counter {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            pointer-events: auto;
         }
 
         .trabalhos-gallery img {
@@ -2381,6 +2531,7 @@
         
                 <nav class="nav-menu" id="nav-menu">
         <a href="#servicos">Serviços</a>
+        <a href="#trabalhos">Nossos Trabalhos</a>
         <a href="#sobre">Sobre Nós</a>
         <a href="#depoimentos">Clientes</a>
         <a href="#contato">Contato</a>
@@ -2445,31 +2596,41 @@
     </div>
 </div>
 
-<!-- Modal de Informações do Produto -->
-<div id="product-modal" class="product-modal">
-
 <!-- Modal da Galeria de Trabalhos -->
 <div id="trabalhos-modal" class="trabalhos-modal">
     <div class="trabalhos-modal-content">
         <button class="trabalhos-modal-close" onclick="closeTrabalhosModal()">&times;</button>
         
-        <div class="trabalhos-gallery" id="trabalhos-gallery">
-            <!-- Vídeo ou imagem principal será inserido aqui -->
+        <div class="trabalhos-gallery" id="trabalhos-gallery-container">
+            <!-- Imagem principal será inserida aqui -->
+        </div>
+        
+        <!-- Navegação entre imagens -->
+        <div class="trabalhos-navigation">
+            <button class="trabalhos-nav-btn trabalhos-prev" onclick="previousTrabalhoImage()" id="trabalhos-prev-btn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="trabalhos-nav-btn trabalhos-next" onclick="nextTrabalhoImage()" id="trabalhos-next-btn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <div class="trabalhos-counter" id="trabalhos-counter-display">
+                <!-- Contador será inserido aqui -->
+            </div>
         </div>
         
         <div class="trabalhos-info-modal">
-            <h2 class="trabalhos-title" id="trabalhos-title"></h2>
-            <p class="trabalhos-description" id="trabalhos-description"></p>
+            <h2 class="trabalhos-title" id="trabalhos-title-display"></h2>
+            <p class="trabalhos-description" id="trabalhos-description-display"></p>
             
             <div class="trabalhos-details">
                 <h4>Detalhes do Trabalho</h4>
-                <ul class="trabalhos-specs" id="trabalhos-specs">
+                <ul class="trabalhos-specs" id="trabalhos-specs-list">
                     <!-- Especificações serão inseridas aqui via JavaScript -->
                 </ul>
             </div>
             
             <div class="trabalhos-actions">
-                <a href="#" class="btn-whatsapp-trabalhos" id="btn-whatsapp-trabalhos" target="_blank">
+                <a href="#" class="btn-whatsapp-trabalhos" id="btn-whatsapp-trabalhos-link" target="_blank">
                     <i class="fab fa-whatsapp"></i> Solicitar Orçamento
                 </a>
             </div>
@@ -2477,7 +2638,8 @@
     </div>
 </div>
 
-
+<!-- Modal de Informações do Produto -->
+<div id="product-modal" class="product-modal">
     <div class="product-modal-content">
         <button class="product-modal-close" onclick="closeProductModal()">&times;</button>
         
@@ -2597,7 +2759,41 @@
         </div>
     </section>
 
-
+    <!-- Seção Nossos Trabalhos -->
+    <section id="trabalhos" data-aos="fade-up">
+        <div class="section-header">
+            <h2>Nossos Trabalhos</h2>
+            <p>Conheça alguns dos nossos projetos e realizações</p>
+        </div>
+        <div class="section-content">
+            <!-- Filtros de Categoria -->
+            <div class="trabalhos-filtros">
+                <button class="filtro-btn active" data-categoria="todas" onclick="filtrarTrabalhos('todas')">
+                    <i class="fas fa-th"></i> Todas as Categorias
+                </button>
+                <button class="filtro-btn" data-categoria="analises-termograficas" onclick="filtrarTrabalhos('analises-termograficas')">
+                    <i class="fas fa-thermometer-half"></i> Análises Termográficas
+                </button>
+                <button class="filtro-btn" data-categoria="laudos-pericias" onclick="filtrarTrabalhos('laudos-pericias')">
+                    <i class="fas fa-clipboard-check"></i> Laudos e Perícias
+                </button>
+                <button class="filtro-btn" data-categoria="limpeza-quimica" onclick="filtrarTrabalhos('limpeza-quimica')">
+                    <i class="fas fa-broom"></i> Limpeza Química em GMGs
+                </button>
+                <button class="filtro-btn" data-categoria="manutencao-gmgs" onclick="filtrarTrabalhos('manutencao-gmgs')">
+                    <i class="fas fa-tools"></i> Manutenção de GMGs
+                </button>
+                <button class="filtro-btn" data-categoria="pericia-instalacoes" onclick="filtrarTrabalhos('pericia-instalacoes')">
+                    <i class="fas fa-search"></i> Perícia em Instalações UFV
+                </button>
+            </div>
+            
+            <!-- Grid de Trabalhos -->
+            <div id="trabalhos-grid" class="trabalhos-grid">
+                <!-- Os trabalhos serão carregados dinamicamente via JavaScript -->
+            </div>
+        </div>
+    </section>
 
     <section id="sobre" data-aos="fade-right">
         <div class="section-header">
@@ -3644,19 +3840,287 @@ Mensagem: ${mensagem}
     let currentProduct = null;
     let currentImageIndex = 0;
 
-    // Dados dos trabalhos
+    // Dados dos trabalhos organizados por categorias com imagens específicas
     window.trabalhosData = [
+        // Análises Termográficas
         {
-            id: 0,
-            title: "Manutenção Preventiva",
-            description: "Programa de manutenção preventiva para Hospital Regional de Ariquemes. Garantia de funcionamento 24/7 para equipamentos críticos.",
-            category: "Manutenção",
+            id: 1,
+            title: "Análise Termográfica - Hospital Regional",
+            description: "Inspeção termográfica completa do sistema elétrico do Hospital Regional de Ariquemes. Identificação de pontos de aquecimento anormal.",
+            category: "analises-termograficas",
             images: [
-                "images/manutencao.jpg",
-                "images/manutencao3.jpg.png",
-                "images/manutencao5.jpg"
+                "images/Análises Termográficas/4958593727132184890.jpg",
+                "images/Análises Termográficas/4958593727132184892.jpg",
+                "images/Análises Termográficas/4958593727132184893.jpg",
+                "images/Análises Termográficas/4958593727132184894.jpg",
+                "images/Análises Termográficas/4958593727132184895.jpg"
             ],
-            video: "manutencao2.mov",
+            specs: [
+                "Câmera termográfica profissional",
+                "Análise de painéis elétricos",
+                "Detecção de pontos quentes",
+                "Relatório técnico detalhado",
+                "Recomendações de correção"
+            ]
+        },
+        {
+            id: 2,
+            title: "Inspeção Termográfica - Shopping Center",
+            description: "Análise termográfica preventiva em shopping center. Verificação de instalações elétricas e equipamentos.",
+            category: "analises-termograficas",
+            images: [
+                "images/Análises Termográficas/4958593727132184896.jpg",
+                "images/Análises Termográficas/4958593727132184897.jpg",
+                "images/Análises Termográficas/4958593727132184898.jpg",
+                "images/Análises Termográficas/4958593727132184899.jpg",
+                "images/Análises Termográficas/4958593727132184900.jpg"
+            ],
+            specs: [
+                "Inspeção de subestações",
+                "Verificação de transformadores",
+                "Análise de quadros de distribuição",
+                "Mapeamento de pontos críticos",
+                "Plano de manutenção preventiva"
+            ]
+        },
+        {
+            id: 3,
+            title: "Análise Termográfica - Sistema Industrial",
+            description: "Análise termográfica avançada em sistema industrial. Detecção de anomalias térmicas em equipamentos críticos.",
+            category: "analises-termograficas",
+            images: [
+                "images/Análises Termográficas/4958593727132184901.jpg",
+                "images/Análises Termográficas/4958593727132184902.jpg",
+                "images/Análises Termográficas/4958593727132184903.jpg",
+                "images/Análises Termográficas/4958593727132184904.jpg",
+                "images/Análises Termográficas/4958593727132184905.jpg"
+            ],
+            specs: [
+                "Análise de equipamentos industriais",
+                "Detecção de sobreaquecimento",
+                "Mapeamento térmico completo",
+                "Relatório de anomalias",
+                "Plano de correção preventiva"
+            ]
+        },
+        {
+            id: 18,
+            title: "Inspeção Termográfica - Subestação Elétrica",
+            description: "Inspeção termográfica completa de subestação elétrica. Análise de transformadores e painéis de distribuição.",
+            category: "analises-termograficas",
+            images: [
+                "images/Análises Termográficas/IMG_9148.jpg",
+                "images/Análises Termográficas/IMG_9149.jpg",
+                "images/Análises Termográficas/IMG_9150.jpg",
+                "images/Análises Termográficas/IMG_9151.jpg",
+                "images/Análises Termográficas/IMG_9152.jpg"
+            ],
+            specs: [
+                "Inspeção de transformadores",
+                "Análise de painéis de distribuição",
+                "Detecção de pontos quentes",
+                "Relatório técnico detalhado",
+                "Recomendações de manutenção"
+            ]
+        },
+        
+        // Laudos e Perícias
+        {
+            id: 4,
+            title: "Laudo Técnico - Sistema de Geração",
+            description: "Elaboração de laudo técnico completo para sistema de geração de energia industrial.",
+            category: "laudos-pericias",
+            images: [
+                "images/Laudos e Perícias/4958593727132184887.jpg",
+                "images/Laudos e Perícias/4958593727132184888.jpg",
+                "images/Laudos e Perícias/4958593727132184889.jpg",
+                "images/Laudos e Perícias/4958593727132184891.jpg",
+                "images/Laudos e Perícias/4958593727132184906.jpg"
+            ],
+            specs: [
+                "Análise técnica completa",
+                "Avaliação de conformidade",
+                "Relatório de inspeção",
+                "Recomendações técnicas",
+                "Documentação fotográfica"
+            ]
+        },
+        {
+            id: 17,
+            title: "Perícia Técnica - Equipamentos Industriais",
+            description: "Perícia técnica especializada em equipamentos industriais. Análise de falhas e responsabilidades.",
+            category: "laudos-pericias",
+            images: [
+                "images/Laudos e Perícias/4958593727132184941.jpg",
+                "images/Laudos e Perícias/4958593727132184942.jpg",
+                "images/Laudos e Perícias/4958593727132184943.jpg",
+                "images/Laudos e Perícias/4958593727132184944.jpg",
+                "images/Laudos e Perícias/4958593727132184945.jpg"
+            ],
+            specs: [
+                "Análise de falhas técnicas",
+                "Investigação de causas",
+                "Laudo pericial detalhado",
+                "Avaliação de responsabilidades",
+                "Relatório para seguros"
+            ]
+        },
+        {
+            id: 5,
+            title: "Perícia em Equipamento Industrial",
+            description: "Perícia técnica em equipamento industrial com falha. Identificação de causas e responsabilidades.",
+            category: "laudos-pericias",
+            images: [
+                "images/Laudos e Perícias/4958593727132184907.jpg",
+                "images/Laudos e Perícias/4958593727132184908.jpg",
+                "images/Laudos e Perícias/4958593727132184929.jpg",
+                "images/Laudos e Perícias/4958593727132184933.jpg",
+                "images/Laudos e Perícias/4958593727132184934.jpg"
+            ],
+            specs: [
+                "Análise de falha",
+                "Investigação técnica",
+                "Laudo pericial",
+                "Avaliação de danos",
+                "Relatório para seguros"
+            ]
+        },
+        {
+            id: 6,
+            title: "Laudo de Conformidade - Instalações Elétricas",
+            description: "Laudo de conformidade para instalações elétricas industriais. Verificação de padrões e normas.",
+            category: "laudos-pericias",
+            images: [
+                "images/Laudos e Perícias/4958593727132184935.jpg",
+                "images/Laudos e Perícias/4958593727132184936.jpg",
+                "images/Laudos e Perícias/4958593727132184938.jpg",
+                "images/Laudos e Perícias/4958593727132184939.jpg",
+                "images/Laudos e Perícias/4958593727132184940.jpg"
+            ],
+            specs: [
+                "Verificação de conformidade",
+                "Análise de padrões técnicos",
+                "Relatório de conformidade",
+                "Certificação técnica",
+                "Documentação legal"
+            ]
+        },
+        {
+            id: 19,
+            title: "Perícia Técnica - Sistema de Geração",
+            description: "Perícia técnica especializada em sistema de geração de energia. Análise de falhas e responsabilidades.",
+            category: "laudos-pericias",
+            images: [
+                "images/Laudos e Perícias/IMG_9153.jpg",
+                "images/Laudos e Perícias/IMG_9154.jpg",
+                "images/Laudos e Perícias/IMG_9155.jpg",
+                "images/Laudos e Perícias/IMG_9156.jpg",
+                "images/Laudos e Perícias/IMG_9157.jpg"
+            ],
+            specs: [
+                "Análise de falhas técnicas",
+                "Investigação de causas",
+                "Laudo pericial detalhado",
+                "Avaliação de responsabilidades",
+                "Relatório para seguros"
+            ]
+        },
+        
+        // Limpeza Química em GMGs
+        {
+            id: 7,
+            title: "Limpeza Química - Gerador Industrial",
+            description: "Limpeza química completa de grupo gerador industrial. Remoção de resíduos e otimização de performance.",
+            category: "limpeza-quimica",
+            images: [
+                "images/Limpeza Química em GMGs/4958593727132184959.jpg",
+                "images/Limpeza Química em GMGs/4958593727132184960.jpg",
+                "images/Limpeza Química em GMGs/4958593727132184961.jpg",
+                "images/Limpeza Química em GMGs/4958593727132184962.jpg",
+                "images/Limpeza Química em GMGs/4958593727132184963.jpg"
+            ],
+            specs: [
+                "Limpeza do sistema de combustível",
+                "Limpeza do sistema de arrefecimento",
+                "Tratamento químico",
+                "Análise de eficiência",
+                "Relatório de limpeza"
+            ]
+        },
+        {
+            id: 15,
+            title: "Limpeza Química - Sistema de Arrefecimento",
+            description: "Limpeza química especializada do sistema de arrefecimento. Prevenção de corrosão e incrustações.",
+            category: "limpeza-quimica",
+            images: [
+                "images/Limpeza Química em GMGs/4958593727132184975.jpg",
+                "images/Limpeza Química em GMGs/4958593727132184976.jpg",
+                "images/Limpeza Química em GMGs/4958593727132184978.jpg",
+                "images/Limpeza Química em GMGs/4958593727132184979.jpg",
+                "images/Limpeza Química em GMGs/4958593727132184971.jpg"
+            ],
+            specs: [
+                "Limpeza de radiadores",
+                "Tratamento anti-corrosivo",
+                "Análise de água",
+                "Prevenção de incrustações",
+                "Relatório de limpeza"
+            ]
+        },
+        {
+            id: 8,
+            title: "Manutenção Química - Sistema de Arrefecimento",
+            description: "Manutenção química do sistema de arrefecimento de grupo gerador. Prevenção de corrosão e incrustações.",
+            category: "limpeza-quimica",
+            images: [
+                "images/Limpeza Química em GMGs/4958593727132184971.jpg",
+                "images/Limpeza Química em GMGs/4958593727132184975.jpg",
+                "images/Limpeza Química em GMGs/4958593727132184976.jpg",
+                "images/Limpeza Química em GMGs/4958593727132184978.jpg",
+                "images/Limpeza Química em GMGs/4958593727132184979.jpg"
+            ],
+            specs: [
+                "Análise de água",
+                "Tratamento químico",
+                "Prevenção de corrosão",
+                "Limpeza de trocadores",
+                "Monitoramento contínuo"
+            ]
+        },
+        {
+            id: 20,
+            title: "Limpeza Química - Sistema de Combustível",
+            description: "Limpeza química especializada do sistema de combustível. Remoção de resíduos e otimização de performance.",
+            category: "limpeza-quimica",
+            images: [
+                "images/Limpeza Química em GMGs/IMG_9158.jpg",
+                "images/Limpeza Química em GMGs/IMG_9159.jpg",
+                "images/Limpeza Química em GMGs/IMG_9160.jpg",
+                "images/Limpeza Química em GMGs/IMG_9161.jpg",
+                "images/Limpeza Química em GMGs/IMG_9162.jpg"
+            ],
+            specs: [
+                "Limpeza de tanques",
+                "Tratamento de combustível",
+                "Remoção de resíduos",
+                "Análise de qualidade",
+                "Relatório de limpeza"
+            ]
+        },
+        
+        // Manutenção de GMGs
+        {
+            id: 9,
+            title: "Manutenção Preventiva - GMG Hospitalar",
+            description: "Programa de manutenção preventiva para grupo gerador hospitalar. Garantia de funcionamento 24/7.",
+            category: "manutencao-gmgs",
+            images: [
+                "images/Manutenção de GMGs/4958593727132184885.jpg",
+                "images/Manutenção de GMGs/4958593727132184932.jpg",
+                "images/Manutenção de GMGs/4958593727132184937.jpg",
+                "images/Manutenção de GMGs/4958593727132184954.jpg",
+                "images/Manutenção de GMGs/4958593727132184964.jpg"
+            ],
             specs: [
                 "Inspeção mensal completa",
                 "Troca de filtros e óleos",
@@ -3666,16 +4130,57 @@ Mensagem: ${mensagem}
             ]
         },
         {
-            id: 1,
-            title: "Instalação de Gerador",
-            description: "Instalação de gerador comercial para shopping center em Ariquemes. Sistema de backup para garantir funcionamento contínuo.",
-            category: "Instalação",
+            id: 16,
+            title: "Manutenção de GMG - Sistema Industrial",
+            description: "Manutenção especializada de grupo gerador em ambiente industrial. Garantia de operação contínua.",
+            category: "manutencao-gmgs",
             images: [
-                "images/manutencao3.jpg.png",
-                "images/manutencao7.jpg",
-                "images/manutencao8.jpg"
+                "images/Manutenção de GMGs/4958593727132184932.jpg",
+                "images/Manutenção de GMGs/4958593727132184937.jpg",
+                "images/Manutenção de GMGs/4958593727132184954.jpg",
+                "images/Manutenção de GMGs/4958593727132184964.jpg",
+                "images/Manutenção de GMGs/4958593727132184965.jpg"
             ],
-            video: "manutencao6.mov",
+            specs: [
+                "Manutenção preventiva industrial",
+                "Inspeção de componentes críticos",
+                "Análise de vibração",
+                "Testes de performance",
+                "Relatório técnico completo"
+            ]
+        },
+        {
+            id: 10,
+            title: "Manutenção Corretiva - GMG Industrial",
+            description: "Atendimento emergencial para grupo gerador industrial. Substituição de componentes críticos.",
+            category: "manutencao-gmgs",
+            images: [
+                "images/Manutenção de GMGs/4958593727132184965.jpg",
+                "images/Manutenção de GMGs/4958593727132184966.jpg",
+                "images/Manutenção de GMGs/4958593727132184967.jpg",
+                "images/Manutenção de GMGs/4958593727132184968.jpg",
+                "images/Manutenção de GMGs/4958593727132184969.jpg"
+            ],
+            specs: [
+                "Atendimento em 2 horas",
+                "Diagnóstico rápido",
+                "Substituição de peças",
+                "Testes de funcionamento",
+                "Garantia de qualidade"
+            ]
+        },
+        {
+            id: 11,
+            title: "Instalação de GMG - Shopping Center",
+            description: "Instalação completa de grupo gerador para shopping center. Sistema de backup automático.",
+            category: "manutencao-gmgs",
+            images: [
+                "images/Manutenção de GMGs/4958593727132184970.jpg",
+                "images/Manutenção de GMGs/4958593727132184972.jpg",
+                "images/Manutenção de GMGs/4958593727132184973.jpg",
+                "images/Manutenção de GMGs/4958593727132184974.jpg",
+                "images/Manutenção de GMGs/4958593727132184977.jpg"
+            ],
             specs: [
                 "Gerador Perkins 50kVA",
                 "Sistema de transferência automática",
@@ -3685,82 +4190,110 @@ Mensagem: ${mensagem}
             ]
         },
         {
-            id: 2,
-            title: "Manutenção Corretiva",
-            description: "Atendimento emergencial 24h para indústria metalúrgica. Substituição de equipamento em tempo recorde.",
-            category: "Reparo",
+            id: 21,
+            title: "Manutenção Preventiva - GMG Industrial",
+            description: "Programa de manutenção preventiva para grupo gerador industrial. Garantia de operação contínua.",
+            category: "manutencao-gmgs",
             images: [
-                "images/manutencao5.jpg",
-                "images/manutencao9.jpg",
-                "images/manutencao.jpg"
+                "images/Manutenção de GMGs/IMG_9163.jpg",
+                "images/Manutenção de GMGs/IMG_9164.jpg",
+                "images/Manutenção de GMGs/IMG_9165.jpg",
+                "images/Manutenção de GMGs/IMG_9166.jpg",
+                "images/Manutenção de GMGs/IMG_9167.jpg"
             ],
-            video: "manutencao10.mov",
             specs: [
-                "Atendimento em 2 horas",
-                "Equipamento de substituição",
-                "Técnicos especializados",
-                "Diagnóstico remoto",
-                "Garantia de funcionamento"
+                "Inspeção mensal completa",
+                "Troca de filtros e óleos",
+                "Testes de carga regulares",
+                "Relatórios detalhados",
+                "Suporte técnico 24h"
+            ]
+        },
+        
+        // Perícia em Instalações UFV
+        {
+            id: 12,
+            title: "Perícia em Sistema Solar - Residencial",
+            description: "Perícia técnica em sistema fotovoltaico residencial. Avaliação de performance e eficiência.",
+            category: "pericia-instalacoes",
+            images: [
+                "images/Perícia em Instalações UFV/4958593727132184884.jpg",
+                "images/Perícia em Instalações UFV/4958593727132184909.jpg",
+                "images/Perícia em Instalações UFV/4958593727132184910.jpg",
+                "images/Perícia em Instalações UFV/4958593727132184911.jpg",
+                "images/Perícia em Instalações UFV/4958593727132184912.jpg"
+            ],
+            specs: [
+                "Análise de performance",
+                "Verificação de instalação",
+                "Testes de eficiência",
+                "Laudo técnico completo",
+                "Recomendações de otimização"
             ]
         },
         {
-            id: 3,
-            title: "Inspeção Técnica",
-            description: "Inspeção técnica completa para fábrica em Ariquemes. Diagnóstico avançado com equipamentos de última geração.",
-            category: "Inspeção",
+            id: 13,
+            title: "Inspeção de Sistema UFV - Comercial",
+            description: "Inspeção técnica de sistema fotovoltaico comercial. Verificação de conformidade e segurança.",
+            category: "pericia-instalacoes",
             images: [
-                "images/manutencao7.jpg",
-                "images/manutencao11.jpg.HEIC",
-                "images/manutencao12.HEIC"
+                "images/Perícia em Instalações UFV/4958593727132184913.jpg",
+                "images/Perícia em Instalações UFV/4958593727132184914.jpg",
+                "images/Perícia em Instalações UFV/4958593727132184915.jpg",
+                "images/Perícia em Instalações UFV/4958593727132184884.jpg",
+                "images/Perícia em Instalações UFV/4958593727132184909.jpg"
             ],
-            video: "manutencao12.mov",
             specs: [
-                "Análise de vibração",
-                "Testes de temperatura",
-                "Verificação de pressão",
+                "Verificação de conformidade",
+                "Análise de segurança",
+                "Testes de isolamento",
+                "Relatório de inspeção",
+                "Certificação técnica"
+            ]
+        },
+        {
+            id: 14,
+            title: "Análise de Sistema Fotovoltaico - Industrial",
+            description: "Análise completa de sistema fotovoltaico industrial. Avaliação de eficiência e performance.",
+            category: "pericia-instalacoes",
+            images: [
+                "images/Perícia em Instalações UFV/4958593727132184910.jpg",
+                "images/Perícia em Instalações UFV/4958593727132184911.jpg",
+                "images/Perícia em Instalações UFV/4958593727132184912.jpg",
+                "images/Perícia em Instalações UFV/4958593727132184913.jpg",
+                "images/Perícia em Instalações UFV/4958593727132184914.jpg"
+            ],
+            specs: [
+                "Análise de eficiência energética",
+                "Verificação de componentes",
+                "Testes de performance",
                 "Relatório técnico detalhado",
-                "Recomendações de manutenção"
+                "Otimização de sistema"
             ]
         },
         {
-            id: 4,
-            title: "Troca de Peças",
-            description: "Substituição de componentes em escritório comercial. Utilização de peças originais e garantia de qualidade.",
-            category: "Manutenção",
+            id: 22,
+            title: "Perícia em Sistema Solar - Comercial",
+            description: "Perícia técnica em sistema fotovoltaico comercial. Avaliação de performance e conformidade.",
+            category: "pericia-instalacoes",
             images: [
-                "images/manutencao8.jpg",
-                "images/manutencao15.jpg",
-                "images/manutencao16.HEIC"
+                "images/Perícia em Instalações UFV/IMG_9168.jpg",
+                "images/Perícia em Instalações UFV/IMG_9169.jpg",
+                "images/Perícia em Instalações UFV/IMG_9170.jpg",
+                "images/Perícia em Instalações UFV/IMG_9171.jpg",
+                "images/Perícia em Instalações UFV/IMG_9172.jpg"
             ],
-            video: "manutencao14.mov",
             specs: [
-                "Peças originais",
-                "Garantia de 12 meses",
-                "Instalação profissional",
-                "Testes de funcionamento",
-                "Documentação técnica"
-            ]
-        },
-        {
-            id: 5,
-            title: "Testes de Funcionamento",
-            description: "Testes de funcionamento para residência de alto padrão. Verificação completa de performance e eficiência.",
-            category: "Testes",
-            images: [
-                "images/manutencao9.jpg",
-                "images/manutencao17.HEIC",
-                "images/manutencao18.HEIC"
-            ],
-            video: "manutencao12.mov",
-            specs: [
-                "Teste de carga completa",
-                "Verificação de eficiência",
-                "Análise de ruído",
-                "Medição de consumo",
-                "Certificado de aprovação"
+                "Análise de performance",
+                "Verificação de instalação",
+                "Testes de eficiência",
+                "Laudo técnico completo",
+                "Recomendações de otimização"
             ]
         }
     ];
+
+    // Array window.trabalhosData definido com sucesso
 
     // Funções para o modal de informações do produto
     function showProductInfo(productId) {
@@ -4170,10 +4703,99 @@ Mensagem: ${mensagem}
         document.body.appendChild(fullscreenModal);
     }
 
+    // Variáveis globais para a galeria de trabalhos
+    let currentTrabalho = null;
+    let currentTrabalhoImageIndex = 0;
+    let filteredTrabalhos = [];
+    
+    // Verificar se os dados dos trabalhos estão definidos corretamente
+    if (typeof window.trabalhosData === 'undefined') {
+        console.error('=== DEBUG: window.trabalhosData não está definido!');
+    }
+
+    // Função para renderizar os trabalhos
+    function renderTrabalhos() {
+        const grid = document.getElementById('trabalhos-grid');
+        
+        if (!grid) {
+            console.error('Grid de trabalhos não encontrado');
+            return;
+        }
+
+        // Se filteredTrabalhos está vazio, inicializa com todos os trabalhos
+        if (filteredTrabalhos.length === 0 && window.trabalhosData) {
+            filteredTrabalhos = [...window.trabalhosData];
+        }
+
+        if (filteredTrabalhos.length === 0) {
+            grid.innerHTML = `
+                <div class="no-trabalhos-message" style="text-align: center; padding: 40px; color: var(--accent); grid-column: 1 / -1;">
+                    <i class="fas fa-images" style="font-size: 3rem; margin-bottom: 20px; opacity: 0.5;"></i>
+                    <h3>Nenhum trabalho encontrado</h3>
+                    <p>Tente selecionar outra categoria ou entre em contato para mais informações.</p>
+                </div>
+            `;
+            return;
+        }
+
+        grid.innerHTML = filteredTrabalhos.map(trabalho => `
+            <div class="trabalho-item" data-aos="fade-up" onclick="openTrabalhosModal(${trabalho.id})" style="cursor: pointer;">
+                <div class="trabalho-image">
+                    <img src="${trabalho.images[0]}" alt="${trabalho.title}" loading="lazy" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlbSBuw6NvIGVuY29udHJhZGE8L3RleHQ+PC9zdmc+'">
+                    <div class="trabalho-overlay">
+                        <div class="trabalho-info">
+                            <h3>${trabalho.title}</h3>
+                            <p>${trabalho.description}</p>
+                            <span class="trabalho-categoria">${getCategoriaNome(trabalho.category)}</span>
+                            <div class="trabalho-indicator">
+                                <i class="fas fa-images"></i>
+                                <span>${trabalho.images.length} imagens</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // Função para obter o nome da categoria
+    function getCategoriaNome(categoria) {
+        const categorias = {
+            'analises-termograficas': 'Análises Termográficas',
+            'laudos-pericias': 'Laudos e Perícias',
+            'limpeza-quimica': 'Limpeza Química em GMGs',
+            'manutencao-gmgs': 'Manutenção de GMGs',
+            'pericia-instalacoes': 'Perícia em Instalações UFV'
+        };
+        return categorias[categoria] || categoria;
+    }
+
+    // Função para filtrar trabalhos
+    function filtrarTrabalhos(categoria) {
+        // Atualiza botões ativos
+        document.querySelectorAll('.filtro-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        
+        // Encontra o botão clicado e adiciona a classe active
+        const clickedBtn = document.querySelector(`[data-categoria="${categoria}"]`);
+        if (clickedBtn) {
+            clickedBtn.classList.add('active');
+        }
+
+        // Filtra os trabalhos
+        if (categoria === 'todas') {
+            filteredTrabalhos = [...window.trabalhosData];
+        } else {
+            filteredTrabalhos = window.trabalhosData.filter(trabalho => trabalho.category === categoria);
+        }
+
+        // Renderiza os trabalhos filtrados
+        renderTrabalhos();
+    }
+
     // Funções para o modal da galeria de trabalhos
     function openTrabalhosModal(id) {
-        console.log('Abrindo modal para trabalho ID:', id);
-        
         // Verificar se os dados estão carregados
         if (typeof window.trabalhosData === 'undefined' || !window.trabalhosData) {
             console.error('Dados dos trabalhos não estão carregados');
@@ -4182,21 +4804,24 @@ Mensagem: ${mensagem}
         }
         
         const trabalho = window.trabalhosData.find(t => t.id === id);
+        
         if (!trabalho) {
             console.error('Trabalho não encontrado para ID:', id);
             alert('Erro: Trabalho não encontrado.');
             return;
         }
 
-        console.log('Trabalho encontrado:', trabalho);
-
         try {
+            // Define o trabalho atual
+            currentTrabalho = trabalho;
+            currentTrabalhoImageIndex = 0;
+
             // Preenche as informações do trabalho
-            const titleElement = document.getElementById('trabalhos-title');
-            const descriptionElement = document.getElementById('trabalhos-description');
-            const specsList = document.getElementById('trabalhos-specs');
+            const titleElement = document.getElementById('trabalhos-title-display');
+            const descriptionElement = document.getElementById('trabalhos-description-display');
+            const specsList = document.getElementById('trabalhos-specs-list');
             const modal = document.getElementById('trabalhos-modal');
-            const whatsappBtn = document.getElementById('btn-whatsapp-trabalhos');
+            const whatsappBtn = document.getElementById('btn-whatsapp-trabalhos-link');
 
             if (!titleElement || !descriptionElement || !specsList || !modal) {
                 console.error('Elementos do modal não encontrados');
@@ -4211,7 +4836,7 @@ Mensagem: ${mensagem}
             specsList.innerHTML = trabalho.specs.map(spec => `<li>${spec}</li>`).join('');
 
             // Configura a galeria
-            setupTrabalhosGallery(trabalho.images, trabalho.video);
+            setupTrabalhosGallery(trabalho.images);
 
             // Configura o botão do WhatsApp
             if (whatsappBtn) {
@@ -4231,12 +4856,20 @@ Mensagem: ${mensagem}
 
     function closeTrabalhosModal() {
         document.getElementById('trabalhos-modal').style.display = 'none';
+        currentTrabalho = null;
+        currentTrabalhoImageIndex = 0;
     }
 
-    function setupTrabalhosGallery(images, video) {
-        console.log('Configurando galeria:', { images, video });
+
+
+    function setupTrabalhosGallery(images) {
+        console.log('Configurando galeria:', { images });
         
-        const gallery = document.getElementById('trabalhos-gallery');
+        const gallery = document.getElementById('trabalhos-gallery-container');
+        const prevBtn = document.getElementById('trabalhos-prev-btn');
+        const nextBtn = document.getElementById('trabalhos-next-btn');
+        const counter = document.getElementById('trabalhos-counter-display');
+        
         if (!gallery) {
             console.error('Elemento da galeria não encontrado');
             return;
@@ -4246,41 +4879,284 @@ Mensagem: ${mensagem}
             images = [];
         }
         
-        if (images.length === 0 && !video) {
+        if (images.length === 0) {
             gallery.innerHTML = `
                 <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: #666;">
                     <i class="fas fa-image" style="font-size: 3rem; opacity: 0.3;"></i>
-                    <p style="margin-left: 15px;">Nenhuma mídia disponível</p>
+                    <p style="margin-left: 15px;">Nenhuma imagem disponível</p>
                 </div>
             `;
+            if (prevBtn) prevBtn.style.display = 'none';
+            if (nextBtn) nextBtn.style.display = 'none';
+            if (counter) counter.style.display = 'none';
             return;
         }
 
-        let mediaHTML = '';
+        // Mostra a primeira imagem
+        updateTrabalhoImage(images);
 
-        // Adiciona vídeo se existir
-        if (video) {
-            mediaHTML += `
-                <video controls style="width: 100%; height: 100%; object-fit: cover;">
-                    <source src="${video}" type="video/mp4">
-                    Seu navegador não suporta vídeos.
-                </video>
-            `;
-            console.log('Vídeo adicionado:', video);
-        } else if (images.length > 0) {
-            // Se não há vídeo, mostra a primeira imagem
-            mediaHTML += `
-                <img src="${images[0]}" alt="Imagem do trabalho" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        // Configura navegação
+        if (images.length > 1) {
+            if (prevBtn) prevBtn.style.display = 'flex';
+            if (nextBtn) nextBtn.style.display = 'flex';
+            if (counter) {
+                counter.style.display = 'block';
+                counter.textContent = `${currentTrabalhoImageIndex + 1} / ${images.length}`;
+            }
+            updateTrabalhoNavigation(images.length);
+        } else {
+            if (prevBtn) prevBtn.style.display = 'none';
+            if (nextBtn) nextBtn.style.display = 'none';
+            if (counter) counter.style.display = 'none';
+        }
+
+        console.log('Galeria configurada com sucesso');
+    }
+
+    // Função para atualizar a imagem atual
+    function updateTrabalhoImage(images) {
+        const gallery = document.getElementById('trabalhos-gallery-container');
+        if (!gallery || !images || images.length === 0) return;
+
+        const currentImage = images[currentTrabalhoImageIndex];
+        gallery.innerHTML = `
+            <div style="position: relative; width: 100%; height: 100%; cursor: pointer;" onclick="expandirImagemTrabalho('${currentImage}', ${currentTrabalhoImageIndex}, ${images.length})">
+                <img src="${currentImage}" alt="Imagem do trabalho" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                 <div style="display: none; align-items: center; justify-content: center; height: 100%; color: #666;">
                     <i class="fas fa-image" style="font-size: 3rem; opacity: 0.3;"></i>
                     <p style="margin-left: 15px;">Imagem não encontrada</p>
                 </div>
-            `;
-            console.log('Imagem adicionada:', images[0]);
-        }
+                <div style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.7); color: white; padding: 5px 10px; border-radius: 20px; font-size: 12px;">
+                    <i class="fas fa-expand"></i> Expandir
+                </div>
+            </div>
+        `;
+    }
 
-        gallery.innerHTML = mediaHTML;
-        console.log('Galeria configurada com sucesso');
+    // Função para atualizar navegação
+    function updateTrabalhoNavigation(totalImages) {
+        const prevBtn = document.getElementById('trabalhos-prev-btn');
+        const nextBtn = document.getElementById('trabalhos-next-btn');
+        const counter = document.getElementById('trabalhos-counter-display');
+
+        if (prevBtn) {
+            prevBtn.disabled = currentTrabalhoImageIndex === 0;
+        }
+        if (nextBtn) {
+            nextBtn.disabled = currentTrabalhoImageIndex === totalImages - 1;
+        }
+        if (counter) {
+            counter.textContent = `${currentTrabalhoImageIndex + 1} / ${totalImages}`;
+        }
+    }
+
+    // Funções de navegação
+    function previousTrabalhoImage() {
+        if (!currentTrabalho || !currentTrabalho.images) return;
+        
+        const totalImages = currentTrabalho.images.length;
+        if (totalImages <= 1) return;
+        
+        currentTrabalhoImageIndex = currentTrabalhoImageIndex === 0 ? totalImages - 1 : currentTrabalhoImageIndex - 1;
+        updateTrabalhoImage(currentTrabalho.images);
+        updateTrabalhoNavigation(totalImages);
+    }
+
+    function nextTrabalhoImage() {
+        if (!currentTrabalho || !currentTrabalho.images) return;
+        
+        const totalImages = currentTrabalho.images.length;
+        if (totalImages <= 1) return;
+        
+        currentTrabalhoImageIndex = (currentTrabalhoImageIndex + 1) % totalImages;
+        updateTrabalhoImage(currentTrabalho.images);
+        updateTrabalhoNavigation(totalImages);
+    }
+    
+    // Função para expandir imagem em tela cheia
+    function expandirImagemTrabalho(imageSrc, currentIndex, totalImages) {
+        // Remover modal anterior se existir
+        const modalAnterior = document.querySelector('.fullscreen-trabalhos-modal');
+        if (modalAnterior) {
+            modalAnterior.remove();
+        }
+        
+        const modal = document.createElement('div');
+        modal.className = 'fullscreen-trabalhos-modal';
+        modal.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100000;
+            cursor: pointer;
+        `;
+        
+        const content = document.createElement('div');
+        content.style.cssText = `
+            position: relative;
+            max-width: 95vw;
+            max-height: 95vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        `;
+        
+        content.innerHTML = `
+            <img src="${imageSrc}" alt="Imagem em tela cheia" style="
+                max-width: 100%;
+                max-height: 100%;
+                object-fit: contain;
+                border-radius: 8px;
+            ">
+            
+            <button onclick="this.parentElement.parentElement.remove()" style="
+                position: absolute;
+                top: -40px;
+                right: 0;
+                background: rgba(255, 255, 255, 0.2);
+                border: none;
+                color: white;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                cursor: pointer;
+                font-size: 1.2rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: background 0.3s ease;
+            ">&times;</button>
+            
+            <div style="
+                position: absolute;
+                bottom: -40px;
+                left: 50%;
+                transform: translateX(-50%);
+                color: white;
+                font-size: 14px;
+                background: rgba(0, 0, 0, 0.7);
+                padding: 8px 16px;
+                border-radius: 20px;
+            ">
+                ${currentIndex + 1} de ${totalImages}
+            </div>
+        `;
+        
+        // Adicionar navegação se houver mais de uma imagem
+        if (totalImages > 1) {
+            const navContainer = document.createElement('div');
+            navContainer.style.cssText = `
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                padding: 0 20px;
+                pointer-events: none;
+            `;
+            
+            navContainer.innerHTML = `
+                <button onclick="navegarImagemTelaCheia(${currentIndex - 1}, ${totalImages})" style="
+                    background: rgba(255, 255, 255, 0.2);
+                    border: none;
+                    color: white;
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    font-size: 1.5rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transition: background 0.3s ease;
+                    pointer-events: auto;
+                    ${currentIndex === 0 ? 'opacity: 0.5; cursor: not-allowed;' : ''}
+                ">&lt;</button>
+                
+                <button onclick="navegarImagemTelaCheia(${currentIndex + 1}, ${totalImages})" style="
+                    background: rgba(255, 255, 255, 0.2);
+                    border: none;
+                    color: white;
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    font-size: 1.5rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transition: background 0.3s ease;
+                    pointer-events: auto;
+                    ${currentIndex === totalImages - 1 ? 'opacity: 0.5; cursor: not-allowed;' : ''}
+                ">&gt;</button>
+            `;
+            
+            content.appendChild(navContainer);
+        }
+        
+        modal.appendChild(content);
+        document.body.appendChild(modal);
+        
+        // Fechar ao clicar fora da imagem
+        modal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.remove();
+            }
+        });
+        
+        // Fechar com ESC
+        const handleEscape = (e) => {
+            if (e.key === 'Escape') {
+                modal.remove();
+                document.removeEventListener('keydown', handleEscape);
+            }
+        };
+        document.addEventListener('keydown', handleEscape);
+        
+        // Navegação com setas do teclado
+        const handleArrowKeys = (e) => {
+            if (totalImages <= 1) return;
+            
+            if (e.key === 'ArrowLeft' && currentIndex > 0) {
+                navegarImagemTelaCheia(currentIndex - 1, totalImages);
+            } else if (e.key === 'ArrowRight' && currentIndex < totalImages - 1) {
+                navegarImagemTelaCheia(currentIndex + 1, totalImages);
+            }
+        };
+        document.addEventListener('keydown', handleArrowKeys);
+        
+        // Limpar event listeners quando modal for fechado
+        modal.addEventListener('remove', () => {
+            document.removeEventListener('keydown', handleEscape);
+            document.removeEventListener('keydown', handleArrowKeys);
+        });
+    }
+    
+    // Função para navegar entre imagens em tela cheia
+    function navegarImagemTelaCheia(newIndex, totalImages) {
+        if (newIndex < 0 || newIndex >= totalImages) return;
+        
+        // Atualizar índice atual
+        currentTrabalhoImageIndex = newIndex;
+        
+        // Obter nova imagem
+        const newImageSrc = currentTrabalho.images[newIndex];
+        
+        // Remover modal atual
+        const modalAtual = document.querySelector('.fullscreen-trabalhos-modal');
+        if (modalAtual) {
+            modalAtual.remove();
+        }
+        
+        // Criar novo modal com a nova imagem
+        expandirImagemTrabalho(newImageSrc, newIndex, totalImages);
     }
 
     // Fechar modal dos trabalhos ao clicar fora dele
@@ -4305,8 +5181,32 @@ Mensagem: ${mensagem}
         } else {
             console.error('Dados dos trabalhos não encontrados');
         }
+
+        // Navegação por teclado na galeria de trabalhos
+        document.addEventListener('keydown', function(e) {
+            if (currentTrabalho && document.getElementById('trabalhos-modal').style.display === 'flex') {
+                if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    previousTrabalhoImage();
+                } else if (e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    nextTrabalhoImage();
+                } else if (e.key === 'Escape') {
+                    e.preventDefault();
+                    closeTrabalhosModal();
+                }
+            }
+        });
+
+        // Verificar se os dados dos trabalhos estão carregados
+        if (typeof window.trabalhosData === 'undefined') {
+            console.error('=== DEBUG: window.trabalhosData não está definido na inicialização!');
+        }
         
 
+        
+        // Inicializar galeria de trabalhos após o DOM estar carregado
+        renderTrabalhos();
     });
 
 
@@ -4471,20 +5371,27 @@ Mensagem: ${mensagem}
     }
 
     function sendPaymentToWhatsApp(paymentData = null) {
-        const nome = document.getElementById('cliente-nome').value.trim();
-        const telefone = document.getElementById('cliente-telefone').value.trim();
-        const email = document.getElementById('cliente-email').value.trim();
-        const endereco = document.getElementById('cliente-endereco').value.trim();
+        console.log('=== DEBUG: sendPaymentToWhatsApp chamada');
+        console.log('=== DEBUG: paymentData:', paymentData);
+        
+        const nomeField = document.getElementById('cliente-nome');
+        const telefoneField = document.getElementById('cliente-telefone');
+        const emailField = document.getElementById('cliente-email');
+        const enderecoField = document.getElementById('cliente-endereco');
+        
+        const nome = nomeField ? nomeField.value.trim() : '';
+        const telefone = telefoneField ? telefoneField.value.trim() : '';
+        const email = emailField ? emailField.value.trim() : '';
+        const endereco = enderecoField ? enderecoField.value.trim() : '';
+        
+        console.log('=== DEBUG: Dados do cliente:', { nome, telefone, email, endereco });
+        console.log('=== DEBUG: Carrinho atual:', cart);
         
         const itensPedido = cart.map(item => {
-            if (item.preco !== null && item.preco !== undefined) {
-                return `• ${item.nome} - Qtd: ${item.qtd} - R$ ${(item.preco * item.qtd).toFixed(2)}`;
-            } else {
-                return `• ${item.nome} - Qtd: ${item.qtd} - Preço: Consulte`;
-            }
+            return `• ${item.nome} - Qtd: ${item.qtd}`;
         }).join('\n');
         
-        const total = cart.reduce((a, b) => a + (b.preco || 0) * b.qtd, 0);
+        const total = 0; // Removido cálculo de total para simplificar
         const dataHora = new Date().toLocaleString('pt-BR');
         const paymentMethod = selectedPaymentMethod === 'pix' ? 'PIX' : 
                              selectedPaymentMethod === 'card' ? 'Cartão de Crédito' : 'Boleto Bancário';
@@ -4492,51 +5399,45 @@ Mensagem: ${mensagem}
         // Gerar ID único do pedido
         const orderId = paymentData ? paymentData.external_reference : `PEDIDO_${Date.now()}`;
         
-        let mensagem = `✅ *PAGAMENTO APROVADO - GRUPO ELETROCONSTRO*
+        let mensagem = `NOVO PEDIDO - GRUPO ELETROCONSTRO
 
-🆔 *INFORMAÇÕES DO PEDIDO:*
-• ID do Pedido: ${orderId}
-• Método de Pagamento: ${paymentMethod}
-• Status: Aprovado
-• Data/Hora: ${dataHora}
-• Total: R$ ${total.toFixed(2)}
+ID: ${orderId}
+Data: ${dataHora}
 
-👤 *DADOS DO CLIENTE:*
-• Nome: ${nome}
-• Telefone: ${telefone}`;
+Cliente: ${nome}
+Telefone: ${telefone}`;
 
-        if (email) mensagem += `\n• Email: ${email}`;
-        if (endereco) mensagem += `\n• Endereço: ${endereco}`;
+        if (email) mensagem += `\nEmail: ${email}`;
+        if (endereco) mensagem += `\nEndereco: ${endereco}`;
 
         mensagem += `
 
-📋 *ITENS DO PEDIDO:*
+Produtos:
 ${itensPedido}
 
-💰 *DETALHES FINANCEIROS:*
-• Subtotal: R$ ${total.toFixed(2)}
-• Taxa de Processamento: R$ 0.00
-• Total Final: R$ ${total.toFixed(2)}
-
-🎉 *PEDIDO CONFIRMADO - PREPARAR PARA ENTREGA*
----
-*Pagamento processado via Mercado Pago*`;
+Pedido confirmado - preparar para entrega`;
 
         const numeroWhatsApp = '5569993359326';
         const mensagemCodificada = encodeURIComponent(mensagem);
         const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
         
-        window.open(urlWhatsApp, '_blank');
+        console.log('=== DEBUG: Mensagem original:', mensagem);
+        console.log('=== DEBUG: Mensagem codificada:', mensagemCodificada);
+        console.log('=== DEBUG: URL WhatsApp:', urlWhatsApp);
+        console.log('=== DEBUG: Tamanho da mensagem:', mensagem.length, 'caracteres');
         
-        // Limpa carrinho e fecha modal
-        cart = [];
-        localStorage.setItem('cart', JSON.stringify(cart));
-        updateCartCount();
-        closeCart();
+        // Verificar se a mensagem não está muito longa (limite do WhatsApp é ~4000 caracteres)
+        if (mensagem.length > 3000) {
+            console.warn('=== DEBUG: Mensagem muito longa, truncando...');
+            const mensagemTruncada = mensagem.substring(0, 3000) + '\n\n[Mensagem truncada devido ao tamanho]';
+            abrirWhatsAppAutomatico(mensagemTruncada, numeroWhatsApp);
+        } else {
+            abrirWhatsAppAutomatico(mensagem, numeroWhatsApp);
+        }
         
         // Salvar dados do pedido no localStorage para histórico
-        const orderHistory = JSON.parse(localStorage.getItem('orderHistory') || '[]');
-        orderHistory.push({
+        const orderHistoryData = JSON.parse(localStorage.getItem('orderHistory') || '[]');
+        orderHistoryData.push({
             id: orderId,
             date: dataHora,
             customer: { nome, telefone, email, endereco },
@@ -4545,11 +5446,20 @@ ${itensPedido}
             paymentMethod: paymentMethod,
             status: 'approved'
         });
-        localStorage.setItem('orderHistory', JSON.stringify(orderHistory));
+        localStorage.setItem('orderHistory', JSON.stringify(orderHistoryData));
+        
+        // Limpa carrinho e fecha modal APÓS salvar os dados
+        cart = [];
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+        closeCart();
     }
 
     // Atualiza função checkout para mostrar sistema de pagamento
     function checkout() {
+        console.log('=== DEBUG: checkout chamada');
+        console.log('=== DEBUG: Carrinho:', cart);
+        
         // Verificar se o carrinho está vazio
         if (!cart || cart.length === 0) {
             alert('Seu carrinho está vazio!');
@@ -4557,10 +5467,24 @@ ${itensPedido}
         }
         
         // Obter dados do formulário
-        const nome = document.getElementById('cliente-nome').value.trim();
-        const telefone = document.getElementById('cliente-telefone').value.trim();
-        const email = document.getElementById('cliente-email').value.trim();
-        const endereco = document.getElementById('cliente-endereco').value.trim();
+        const nomeField = document.getElementById('cliente-nome');
+        const telefoneField = document.getElementById('cliente-telefone');
+        const emailField = document.getElementById('cliente-email');
+        const enderecoField = document.getElementById('cliente-endereco');
+        
+        console.log('=== DEBUG: Campos encontrados:', {
+            nomeField: !!nomeField,
+            telefoneField: !!telefoneField,
+            emailField: !!emailField,
+            enderecoField: !!enderecoField
+        });
+        
+        const nome = nomeField ? nomeField.value.trim() : '';
+        const telefone = telefoneField ? telefoneField.value.trim() : '';
+        const email = emailField ? emailField.value.trim() : '';
+        const endereco = enderecoField ? enderecoField.value.trim() : '';
+        
+        console.log('=== DEBUG: Dados do formulário:', { nome, telefone, email, endereco });
         
         // Validar dados obrigatórios
         if (!nome || !telefone) {
@@ -4574,59 +5498,231 @@ ${itensPedido}
         
         cart.forEach((item, index) => {
             const quantidade = parseInt(item.qtd) || 1;
-            
-            if (item.preco !== null && item.preco !== undefined) {
-                const preco = parseFloat(item.preco) || 0;
-                const precoItem = preco * quantidade;
-                total += precoItem;
-                listaProdutos += `${index + 1}. ${item.nome} - Quantidade: ${quantidade} - Preço: R$ ${precoItem.toFixed(2)}\n`;
-            } else {
-                listaProdutos += `${index + 1}. ${item.nome} - Quantidade: ${quantidade} - Preço: Consulte\n`;
-            }
+            listaProdutos += `${index + 1}. ${item.nome} - Quantidade: ${quantidade}\n`;
         });
         
         // Criar mensagem completa
         const dataHora = new Date().toLocaleString('pt-BR');
         
-        let mensagem = `🛒 *NOVO PEDIDO ONLINE - GRUPO ELETROCONSTRO*\n\n` +
-            `📅 Data/Hora: ${dataHora}\n` +
-            `\n👤 *DADOS DO CLIENTE:*\n` +
-            `• Nome: ${nome}\n` +
-            `• Telefone: ${telefone}`;
+        // Criar mensagem simplificada para teste
+        let mensagem = `NOVO PEDIDO ONLINE - GRUPO ELETROCONSTRO\n\n` +
+            `Data/Hora: ${dataHora}\n` +
+            `\nDADOS DO CLIENTE:\n` +
+            `Nome: ${nome}\n` +
+            `Telefone: ${telefone}`;
         
-        if (email) mensagem += `\n• Email: ${email}`;
-        if (endereco) mensagem += `\n• Endereço: ${endereco}`;
+        if (email) mensagem += `\nEmail: ${email}`;
+        if (endereco) mensagem += `\nEndereco: ${endereco}`;
         
-        mensagem += `\n\n📋 *PRODUTOS SOLICITADOS:*\n${listaProdutos}\n`;
+        mensagem += `\n\nPRODUTOS SOLICITADOS:\n${listaProdutos}\n`;
         
-        if (total > 0) {
-            mensagem += `💰 *TOTAL DO PEDIDO: R$ ${total.toFixed(2)}*\n\n`;
-        } else {
-            mensagem += `💰 *TOTAL DO PEDIDO: Consulte preços*\n\n`;
-        }
+        mensagem += `\n\n`;
         
-        mensagem += `*Mensagem gerada automaticamente pelo site*`;
+        mensagem += `Mensagem gerada automaticamente pelo site`;
         
         // Criar URL do WhatsApp
         const numeroWhatsApp = '5569993359326';
         const mensagemCodificada = encodeURIComponent(mensagem);
         const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
         
-        // Limpar carrinho e fechar modal
-        cart = [];
-        localStorage.setItem('cart', JSON.stringify(cart));
-        updateCartCount();
-        closeCart();
+        console.log('=== DEBUG: Mensagem checkout:', mensagem);
+        console.log('=== DEBUG: Mensagem codificada checkout:', mensagemCodificada);
+        console.log('=== DEBUG: URL WhatsApp checkout:', urlWhatsApp);
+        console.log('=== DEBUG: Tamanho da mensagem checkout:', mensagem.length, 'caracteres');
         
-        // Sempre tentar abrir WhatsApp diretamente (funciona melhor online)
-        try {
-            window.open(urlWhatsApp, '_blank');
-            alert('Pedido enviado com sucesso! Você será redirecionado para o WhatsApp para finalizar o pedido.');
-        } catch (error) {
-            // Se der erro, mostrar modal local
-            mostrarMensagemLocal(mensagem);
+        // Verificar se a mensagem não está muito longa
+        if (mensagem.length > 3000) {
+            console.warn('=== DEBUG: Mensagem checkout muito longa, truncando...');
+            const mensagemTruncada = mensagem.substring(0, 3000) + '\n\n[Mensagem truncada devido ao tamanho]';
+            
+            // Limpar carrinho e fechar modal
+            cart = [];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            closeCart();
+            
+            // Tentar abrir WhatsApp automaticamente
+            abrirWhatsAppAutomatico(mensagemTruncada, numeroWhatsApp);
+        } else {
+            // Limpar carrinho e fechar modal
+            cart = [];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            closeCart();
+            
+            // Tentar abrir WhatsApp automaticamente
+            abrirWhatsAppAutomatico(mensagem, numeroWhatsApp);
         }
     }
+
+    // Função para mostrar mensagem para copiar
+    function mostrarMensagemParaCopiar(mensagem, numeroWhatsApp) {
+        // Criar modal para mostrar a mensagem
+        const modal = document.createElement('div');
+        modal.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+        `;
+        
+        const content = document.createElement('div');
+        content.style.cssText = `
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 90vw;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        `;
+        
+        content.innerHTML = `
+            <button onclick="this.parentElement.parentElement.remove()" style="
+                position: absolute;
+                top: 10px;
+                right: 15px;
+                background: none;
+                border: none;
+                font-size: 24px;
+                cursor: pointer;
+                color: #666;
+            ">&times;</button>
+            
+            <h2 style="color: #25D366; margin-bottom: 20px; text-align: center;">
+                <i class="fab fa-whatsapp"></i> Pedido Enviado com Sucesso!
+            </h2>
+            
+            <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 20px; border-left: 4px solid #25D366;">
+                <h3 style="margin: 0 0 15px 0; color: #333;">📋 Mensagem do Pedido:</h3>
+                <div style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #ddd; font-family: monospace; white-space: pre-wrap; max-height: 300px; overflow-y: auto;">
+                    ${mensagem}
+                </div>
+            </div>
+            
+            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                <button onclick="copiarMensagem('${mensagem.replace(/'/g, "\\'")}')" style="
+                    background: #25D366;
+                    color: white;
+                    border: none;
+                    padding: 12px 24px;
+                    border-radius: 25px;
+                    cursor: pointer;
+                    font-size: 16px;
+                    font-weight: 600;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                ">
+                    <i class="fas fa-copy"></i> Copiar Mensagem
+                </button>
+                
+                <button onclick="abrirWhatsAppComMensagem('${numeroWhatsApp}', '${mensagem.replace(/'/g, "\\'")}')" style="
+                    background: #128C7E;
+                    color: white;
+                    border: none;
+                    padding: 12px 24px;
+                    border-radius: 25px;
+                    cursor: pointer;
+                    font-size: 16px;
+                    font-weight: 600;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                ">
+                    <i class="fab fa-whatsapp"></i> Abrir WhatsApp
+                </button>
+            </div>
+            
+            <div style="margin-top: 20px; padding: 15px; background: #e8f5e8; border-radius: 8px; border-left: 4px solid #25D366;">
+                <h4 style="margin: 0 0 10px 0; color: #2d5a2d;">📱 Como Finalizar o Pedido:</h4>
+                <ol style="margin: 0; padding-left: 20px; color: #555;">
+                    <li>Clique em "Copiar Mensagem"</li>
+                    <li>Abra o WhatsApp no seu celular</li>
+                    <li>Procure pelo contato: <strong>+55 69 99335-9326</strong></li>
+                    <li>Cole a mensagem (Ctrl+V ou toque longo)</li>
+                    <li>Envie a mensagem</li>
+                </ol>
+            </div>
+        `;
+        
+        modal.appendChild(content);
+        document.body.appendChild(modal);
+    }
+
+    // Função para copiar mensagem
+    function copiarMensagem(mensagem) {
+        navigator.clipboard.writeText(mensagem).then(() => {
+            alert('✅ Mensagem copiada com sucesso! Agora cole no WhatsApp.');
+        }).catch(() => {
+            // Fallback para navegadores antigos
+            const textArea = document.createElement('textarea');
+            textArea.value = mensagem;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            alert('✅ Mensagem copiada com sucesso! Agora cole no WhatsApp.');
+        });
+    }
+
+    // Função para abrir WhatsApp automaticamente
+    function abrirWhatsAppAutomatico(mensagem, numeroWhatsApp) {
+        console.log('=== DEBUG: Tentando abrir WhatsApp automaticamente');
+        
+        // Limpar a mensagem
+        const mensagemLimpa = mensagem
+            .replace(/[^\w\s\-.,!?@#$%&*()+=:;()]/g, '')
+            .replace(/\n/g, '%0A')
+            .replace(/\s+/g, ' ')
+            .trim();
+        
+        // Verificar tamanho da mensagem
+        if (mensagemLimpa.length > 3000) {
+            const mensagemTruncada = mensagemLimpa.substring(0, 3000) + '\n\n[Mensagem truncada]';
+            abrirWhatsAppComMensagemTruncada(mensagemTruncada, numeroWhatsApp);
+        } else {
+            abrirWhatsAppComMensagemTruncada(mensagemLimpa, numeroWhatsApp);
+        }
+    }
+    
+    // Função para tentar abrir WhatsApp com mensagem truncada
+    function abrirWhatsAppComMensagemTruncada(mensagem, numeroWhatsApp) {
+        // Detectar se é mobile
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        
+        if (isMobile) {
+            // Para mobile, usar redirecionamento direto
+            const url = `whatsapp://send?phone=${numeroWhatsApp}&text=${encodeURIComponent(mensagem)}`;
+            window.location.href = url;
+        } else {
+            // Para desktop, usar wa.me
+            const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+            window.open(url, '_blank');
+        }
+    }
+    
+
+    
+
+    
+
+
+    // Função para abrir WhatsApp com mensagem (mantida para compatibilidade)
+    function abrirWhatsAppComMensagem(numero, mensagem) {
+        const mensagemCodificada = encodeURIComponent(mensagem);
+        const urlWhatsApp = `https://wa.me/${numero}?text=${mensagemCodificada}`;
+        window.open(urlWhatsApp, '_blank');
+    }
+    
+
 
     // Função para mostrar mensagem localmente
     function mostrarMensagemLocal(mensagem) {
