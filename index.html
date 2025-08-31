@@ -8,6 +8,13 @@
     <meta property="og:title" content="Grupo Eletroconstro | Soluções em Energia para Ariquemes">
     <meta property="og:description" content="Locação de geradores e soluções energéticas para sua empresa ou residência em Ariquemes">
     <title>Grupo Eletroconstro | Soluções em Energia - Ariquemes/RO</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -1883,6 +1890,78 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
+
+
+        /* Estilos para as seções de categoria */
+        .categoria-section {
+            margin-bottom: 50px;
+        }
+
+        .categoria-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(11, 31, 58, 0.03) 0%, rgba(28, 43, 57, 0.05) 100%);
+            border-radius: 20px;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .categoria-header:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .categoria-header h3 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .categoria-header h3 i {
+            margin-right: 12px;
+            font-size: 1.6rem;
+            color: var(--primary);
+        }
+
+        .categoria-header p {
+            color: var(--dark);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            max-width: 900px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Responsividade para as seções de categoria */
+        @media (max-width: 768px) {
+            .categoria-header {
+                padding: 20px 15px;
+                margin-bottom: 25px;
+            }
+
+            .categoria-header h3 {
+                font-size: 1.5rem;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .categoria-header h3 i {
+                margin-right: 0;
+                margin-bottom: 5px;
+            }
+
+            .categoria-header p {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+        }
+
         .trabalho-indicator {
             margin-top: 10px;
             display: flex;
@@ -2874,7 +2953,7 @@
                     </div>
                 </div>
                 
-                <div class="contact-method clickable" onclick="window.open('https://maps.google.com/?q=Rua+Jacundá,+4174+Sala+202,+Setor+4,+Ariquemes+-+RO', '_blank')">
+                <div class="contact-method clickable" onclick="window.open('https://maps.google.com/?q=Av.+Machadinho,+2125+-+Jardim+América,+Ariquemes+-+RO', '_blank')">
                     <div class="contact-icon">
                         <i class="fas fa-map-marker-alt"></i>
                     </div>
@@ -5260,30 +5339,68 @@ Mensagem: ${mensagem}
             return;
         }
 
-        grid.innerHTML = filteredTrabalhos.map(trabalho => `
-            <div class="trabalho-item" data-aos="fade-up" onclick="openTrabalhosModal(${trabalho.id})" style="cursor: pointer;">
-                <div class="trabalho-image">
-                    <img src="${trabalho.images[0]}" alt="${trabalho.title}" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div style="display: none; align-items: center; justify-content: center; height: 100%; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); color: #6c757d; border-radius: 8px; position: absolute; top: 0; left: 0; right: 0; bottom: 0;">
-                        <div style="text-align: center;">
-                            <i class="fas fa-tools" style="font-size: 2.5rem; opacity: 0.4; margin-bottom: 8px; display: block;"></i>
-                            <p style="margin: 0; font-size: 12px; font-weight: 500;">${trabalho.title}</p>
-                        </div>
+        // Agrupar trabalhos por categoria
+        const trabalhosPorCategoria = {};
+        filteredTrabalhos.forEach(trabalho => {
+            if (!trabalhosPorCategoria[trabalho.category]) {
+                trabalhosPorCategoria[trabalho.category] = [];
+            }
+            trabalhosPorCategoria[trabalho.category].push(trabalho);
+        });
+
+        // Gerar HTML com descrições das categorias
+        let html = '';
+        
+        Object.keys(trabalhosPorCategoria).forEach(categoria => {
+            const trabalhos = trabalhosPorCategoria[categoria];
+            const categoriaNome = getCategoriaNome(categoria);
+            const categoriaDescricao = getCategoriaDescricao(categoria);
+            
+            // Adicionar seção da categoria com descrição
+            html += `
+                <div class="categoria-section" style="grid-column: 1 / -1; margin-bottom: 40px;">
+                    <div class="categoria-header" style="text-align: center; margin-bottom: 30px; padding: 20px; background: linear-gradient(135deg, rgba(11, 31, 58, 0.05) 0%, rgba(28, 43, 57, 0.05) 100%); border-radius: 15px; border-left: 4px solid var(--primary);">
+                        <h3 style="color: var(--primary); font-size: 1.8rem; margin-bottom: 15px; font-weight: 600;">
+                            <i class="${getCategoriaIcon(categoria)}" style="margin-right: 10px;"></i>
+                            ${categoriaNome}
+                        </h3>
+                        <p style="color: var(--dark); font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 0 auto;">
+                            ${categoriaDescricao}
+                        </p>
                     </div>
-                    <div class="trabalho-overlay">
-                        <div class="trabalho-info">
-                            <h3>${trabalho.title}</h3>
-                            <p>${trabalho.description}</p>
-                            <span class="trabalho-categoria">${getCategoriaNome(trabalho.category)}</span>
-                            <div class="trabalho-indicator">
-                                <i class="fas fa-images"></i>
-                                <span>${trabalho.images.length} imagens</span>
+                </div>
+            `;
+            
+            // Adicionar trabalhos da categoria
+            trabalhos.forEach(trabalho => {
+                html += `
+                    <div class="trabalho-item" data-aos="fade-up" onclick="openTrabalhosModal(${trabalho.id})" style="cursor: pointer;">
+                        <div class="trabalho-image">
+                            <img src="${trabalho.images[0]}" alt="${trabalho.title}" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div style="display: none; align-items: center; justify-content: center; height: 100%; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); color: #6c757d; border-radius: 8px; position: absolute; top: 0; left: 0; right: 0; bottom: 0;">
+                                <div style="text-align: center;">
+                                    <i class="fas fa-tools" style="font-size: 2.5rem; opacity: 0.4; margin-bottom: 8px; display: block;"></i>
+                                    <p style="margin: 0; font-size: 12px; font-weight: 500;">${trabalho.title}</p>
+                                </div>
+                            </div>
+                            <div class="trabalho-overlay">
+                                <div class="trabalho-info">
+                                    <h3>${trabalho.title}</h3>
+                                    <p>${trabalho.description}</p>
+                                    <span class="trabalho-categoria">${categoriaNome}</span>
+                                    <div class="trabalho-indicator">
+                                        <i class="fas fa-images"></i>
+                                        <span>${trabalho.images.length} imagens</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        `).join('');
+                `;
+            });
+        });
+
+        grid.innerHTML = html;
     }
 
     // Função para obter o nome da categoria
@@ -5296,6 +5413,30 @@ Mensagem: ${mensagem}
             'pericia-instalacoes': 'Perícia em Instalações UFV'
         };
         return categorias[categoria] || categoria;
+    }
+
+    // Função para obter a descrição da categoria
+    function getCategoriaDescricao(categoria) {
+        const descricoes = {
+            'analises-termograficas': 'Utilizamos câmeras termográficas de alta precisão para identificar pontos de superaquecimento em equipamentos elétricos, painéis de comando e instalações. Esta tecnologia permite detectar problemas antes que se tornem falhas críticas, garantindo a segurança e eficiência dos sistemas elétricos.',
+            'laudos-pericias': 'Realizamos laudos técnicos especializados e perícias em equipamentos elétricos, instalações industriais e sistemas de geração de energia. Nossos relatórios são detalhados e seguem as normas técnicas vigentes, fornecendo informações precisas para tomada de decisões.',
+            'limpeza-quimica': 'Especializados na limpeza química de Geradores de Média e Grande potência (GMGs). Utilizamos produtos específicos e técnicas avançadas para remover sujeiras, óxidos e resíduos que comprometem o desempenho e vida útil dos equipamentos.',
+            'manutencao-gmgs': 'Serviços completos de manutenção preventiva e corretiva em Geradores de Média e Grande potência. Incluímos inspeções técnicas, troca de filtros, óleos, ajustes de regulagem e testes de funcionamento para garantir máxima confiabilidade.',
+            'pericia-instalacoes': 'Perícias especializadas em instalações de Usinas Fotovoltaicas (UFV). Avaliamos a qualidade da instalação, eficiência dos painéis, conformidade com normas técnicas e identificamos possíveis problemas que possam afetar o desempenho do sistema.'
+        };
+        return descricoes[categoria] || 'Descrição não disponível para esta categoria.';
+    }
+
+    // Função para obter o ícone da categoria
+    function getCategoriaIcon(categoria) {
+        const icones = {
+            'analises-termograficas': 'fas fa-thermometer-half',
+            'laudos-pericias': 'fas fa-clipboard-check',
+            'limpeza-quimica': 'fas fa-broom',
+            'manutencao-gmgs': 'fas fa-tools',
+            'pericia-instalacoes': 'fas fa-search'
+        };
+        return icones[categoria] || 'fas fa-cog';
     }
 
     // Função para filtrar trabalhos
